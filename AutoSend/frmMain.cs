@@ -2736,7 +2736,7 @@ namespace AutoSend
                         #region 重新登录获取
                         if (errcount > 2)
                         {
-                            string key = NetHelper.GetMD5(Myinfo.username + "fangyuan888");
+                            string key = NetHelper.GetMD5(Myinfo.username + "100dh888");
                             string dosubmit = "1";
                             var f = new StringBuilder();
                             f.AppendFormat("username={0}&", Myinfo.username);
@@ -2760,25 +2760,16 @@ namespace AutoSend
                                 else if (code == "1")//成功
                                 {
                                     string data = jo["detail"].ToString();
-                                    realmNameInfo = jo["data"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
-                                    realmList = jo["data"]["realmList"].ToString();
-                                    //rjlist = (List<ReleaseJson>)HttpHelper.JsonToObject<List<ReleaseJson>>(release);
-                                    JObject joo = (JObject)JsonConvert.DeserializeObject(realmList);
-                                    if (joo.Count > 0)
+                                    realmNameInfo = jo["detail"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
+                                    realmList = jo["detail"]["realmList"].ToString();
+                                    List<realmNameInfo> rjlist = (List<realmNameInfo>)HttpHelper.JsonToObject<List<realmNameInfo>>(realmList);
+                                    if (rjlist.Count > 0)
                                     {
-                                        List<realmNameInfo> rjlist = new List<realmNameInfo>();
-                                        foreach (var item in joo)
-                                        {
-                                            realmNameInfo rj = new realmNameInfo();
-                                            rj.Id = joo[item.Key]["Id"].ToString();
-                                            rj.realmName = joo[item.Key]["realmName"].ToString();
-                                            rj.realmAddress = joo[item.Key]["realmAddress"].ToString();
-                                            rj.isUseing = (bool)joo[item.Key]["isUseing"];
-                                            //rj.path = joo[item.Key]["path"].ToString();路径，暂时未加
+                                        List<realmNameInfo> rList = new List<realmNameInfo>();
+                                        foreach (realmNameInfo rj in rjlist)
                                             if (realmNameInfo.Contains(rj.Id) && rj.isUseing == true)
-                                                rjlist.Add(rj);
-                                        }
-                                        Myinfo.rjlist = rjlist;
+                                                rList.Add(rj);
+                                        Myinfo.rjlist = rList;
                                     }
                                 }
                             }
@@ -4508,7 +4499,7 @@ namespace AutoSend
 
         private void timer7_Tick(object sender, EventArgs e)
         {
-            string key = NetHelper.GetMD5(Myinfo.username + "fangyuan888");
+            string key = NetHelper.GetMD5(Myinfo.username + "100dh888");
             string dosubmit = "1";
             var f = new StringBuilder();
             f.AppendFormat("username={0}&", Myinfo.username);
@@ -4527,25 +4518,20 @@ namespace AutoSend
                 if (code == "1")//成功
                 {
                     string data = jo["detail"].ToString();
-                    realmNameInfo = jo["data"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
-                    realmList = jo["data"]["realmList"].ToString();
+                    expirationTime = jo["detail"]["cmUser"]["expirationTime"].ToString();//到期时间
+                    DateTime.TryParse(expirationTime, out s);
+                    realmNameInfo = jo["detail"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
+                    realmList = jo["detail"]["realmList"].ToString();
                     //rjlist = (List<ReleaseJson>)HttpHelper.JsonToObject<List<ReleaseJson>>(release);
-                    JObject joo = (JObject)JsonConvert.DeserializeObject(realmList);
-                    if (joo.Count > 0)
+                    List<realmNameInfo> rjlist = (List<realmNameInfo>)HttpHelper.JsonToObject<List<realmNameInfo>>(realmList);
+                    if (rjlist.Count > 0)
                     {
-                        List<realmNameInfo> rjlist = new List<realmNameInfo>();
-                        foreach (var item in joo)
-                        {
-                            realmNameInfo rj = new realmNameInfo();
-                            rj.Id = joo[item.Key]["Id"].ToString();
-                            rj.realmName = joo[item.Key]["realmName"].ToString();
-                            rj.realmAddress = joo[item.Key]["realmAddress"].ToString();
-                            rj.isUseing = (bool)joo[item.Key]["isUseing"];
+                        List<realmNameInfo> rList = new List<realmNameInfo>();
+                        foreach (realmNameInfo rj in rjlist)
                             //rj.path = joo[item.Key]["path"].ToString();路径，暂时未加
                             if (realmNameInfo.Contains(rj.Id) && rj.isUseing == true)
-                                rjlist.Add(rj);
-                        }
-                        Myinfo.rjlist = rjlist;
+                                rList.Add(rj);
+                        Myinfo.rjlist = rList;
                     }
                 }
             }

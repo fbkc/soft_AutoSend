@@ -61,9 +61,9 @@ namespace AutoSend
             s = DateTime.Now;
             n = DateTime.Now;
 
-            string key = NetHelper.GetMD5(name + "fangyuan898");
+            string key = NetHelper.GetMD5(name + "100dh888");
             string dosubmit = "1";
-            var obj = new 
+            var obj = new
             {
                 username = name,
                 password = pass,
@@ -87,25 +87,18 @@ namespace AutoSend
                         string data = jo["detail"].ToString();
                         expirationTime = jo["detail"]["cmUser"]["expirationTime"].ToString();//到期时间
                         DateTime.TryParse(expirationTime, out s);
-                        realmNameInfo = jo["data"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
-                        realmList = jo["data"]["realmList"].ToString();
+                        realmNameInfo = jo["detail"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
+                        realmList = jo["detail"]["realmList"].ToString();
                         //rjlist = (List<ReleaseJson>)HttpHelper.JsonToObject<List<ReleaseJson>>(release);
-                        JObject joo = (JObject)JsonConvert.DeserializeObject(realmList);
-                        if (joo.Count > 0)
+                        List<realmNameInfo> rjlist = (List<realmNameInfo>)HttpHelper.JsonToObject<List<realmNameInfo>>(realmList);
+                        if (rjlist.Count > 0)
                         {
-                            List<realmNameInfo> rjlist = new List<realmNameInfo>();
-                            foreach (var item in joo)
-                            {
-                                realmNameInfo rj = new realmNameInfo();
-                                rj.Id = joo[item.Key]["Id"].ToString();
-                                rj.realmName = joo[item.Key]["realmName"].ToString();
-                                rj.realmAddress = joo[item.Key]["realmAddress"].ToString();
-                                rj.isUseing = (bool)joo[item.Key]["isUseing"];
+                            List<realmNameInfo> rList = new List<realmNameInfo>();
+                            foreach (realmNameInfo rj in rjlist)
                                 //rj.path = joo[item.Key]["path"].ToString();路径，暂时未加
                                 if (realmNameInfo.Contains(rj.Id) && rj.isUseing == true)
-                                    rjlist.Add(rj);
-                            }
-                            Myinfo.rjlist = rjlist;
+                                    rList.Add(rj);
+                            Myinfo.rjlist = rList;
                         }
                         if (s <= n)
                         {
