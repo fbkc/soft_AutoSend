@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://autosend.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://autosend.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://autosend.com/">
+      <s:element name="Heartbeat">
+        <s:complexType />
+      </s:element>
+      <s:element name="HeartbeatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HeartbeatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Getgg">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetggResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetggResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strpass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetHeart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strpass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetHeartResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePassWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strpass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePassWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePassWordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetIsUse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strpass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetIsUseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetIsUseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HeartbeatSoapIn">
+    <wsdl:part name="parameters" element="tns:Heartbeat" />
+  </wsdl:message>
+  <wsdl:message name="HeartbeatSoapOut">
+    <wsdl:part name="parameters" element="tns:HeartbeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetggSoapIn">
+    <wsdl:part name="parameters" element="tns:Getgg" />
+  </wsdl:message>
+  <wsdl:message name="GetggSoapOut">
+    <wsdl:part name="parameters" element="tns:GetggResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetHeartSoapIn">
+    <wsdl:part name="parameters" element="tns:SetHeart" />
+  </wsdl:message>
+  <wsdl:message name="SetHeartSoapOut">
+    <wsdl:part name="parameters" element="tns:SetHeartResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePassWordSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePassWord" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePassWordSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePassWordResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetIsUseSoapIn">
+    <wsdl:part name="parameters" element="tns:SetIsUse" />
+  </wsdl:message>
+  <wsdl:message name="SetIsUseSoapOut">
+    <wsdl:part name="parameters" element="tns:SetIsUseResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HeartSoap">
+    <wsdl:operation name="Heartbeat">
+      <wsdl:input message="tns:HeartbeatSoapIn" />
+      <wsdl:output message="tns:HeartbeatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Getgg">
+      <wsdl:input message="tns:GetggSoapIn" />
+      <wsdl:output message="tns:GetggSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetHeart">
+      <wsdl:input message="tns:SetHeartSoapIn" />
+      <wsdl:output message="tns:SetHeartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassWord">
+      <wsdl:input message="tns:UpdatePassWordSoapIn" />
+      <wsdl:output message="tns:UpdatePassWordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetIsUse">
+      <wsdl:input message="tns:SetIsUseSoapIn" />
+      <wsdl:output message="tns:SetIsUseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HeartSoap" type="tns:HeartSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Heartbeat">
+      <soap:operation soapAction="http://autosend.com/Heartbeat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Getgg">
+      <soap:operation soapAction="http://autosend.com/Getgg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://autosend.com/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetHeart">
+      <soap:operation soapAction="http://autosend.com/SetHeart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassWord">
+      <soap:operation soapAction="http://autosend.com/UpdatePassWord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetIsUse">
+      <soap:operation soapAction="http://autosend.com/SetIsUse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HeartSoap12" type="tns:HeartSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Heartbeat">
+      <soap12:operation soapAction="http://autosend.com/Heartbeat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Getgg">
+      <soap12:operation soapAction="http://autosend.com/Getgg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://autosend.com/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetHeart">
+      <soap12:operation soapAction="http://autosend.com/SetHeart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassWord">
+      <soap12:operation soapAction="http://autosend.com/UpdatePassWord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetIsUse">
+      <soap12:operation soapAction="http://autosend.com/SetIsUse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Heart">
+    <wsdl:port name="HeartSoap" binding="tns:HeartSoap">
+      <soap:address location="http://123.56.125.147:8099/Heart.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HeartSoap12" binding="tns:HeartSoap12">
+      <soap12:address location="http://123.56.125.147:8099/Heart.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

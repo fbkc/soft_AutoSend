@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://123.56.125.147:8099/Heart.asmx?wsdl" docRef="http://123.56.125.147:8099/Heart.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://123.56.125.147:8099/Heart.asmx" xmlns:q1="http://autosend.com/" binding="q1:HeartSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://123.56.125.147:8099/Heart.asmx" xmlns:q2="http://autosend.com/" binding="q2:HeartSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

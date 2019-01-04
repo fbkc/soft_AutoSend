@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10201227-0D23-4F10-B739-5FBCE6E9D3D7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutoSend</RootNamespace>
+    <AssemblyName>搏世信息发布系统</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>E:\work\codeplex\lcsm\pubAutoSend\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>64X64.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6245573ECB1055E1E11CD0150CAF2770DCD09653</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutoSend.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.39341, Culture=neutral, PublicKeyToken=318b389f0db66e46" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lhc工作\Jsondll\Bin\net20\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinHtmlEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WinHtmlEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessHelper.cs" />
+    <Compile Include="AShelp.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Category1.cs" />
+    <Compile Include="DropDL.cs" />
+    <Compile Include="frmareacs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmareacs.Designer.cs">
+      <DependentUpon>frmareacs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcj.Designer.cs">
+      <DependentUpon>frmcj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDig.designer.cs">
+      <DependentUpon>frmDig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmdlhtml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmdlhtml.designer.cs">
+      <DependentUpon>frmdlhtml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmgetpic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmgetpic.Designer.cs">
+      <DependentUpon>frmgetpic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGG.Designer.cs">
+      <DependentUpon>frmGG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHtml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHtml.Designer.cs">
+      <DependentUpon>frmHtml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmhzc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmhzc.designer.cs">
+      <DependentUpon>frmhzc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmimg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmimg.Designer.cs">
+      <DependentUpon>frmimg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmjz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmjz.Designer.cs">
+      <DependentUpon>frmjz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkeyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkeyword.Designer.cs">
+      <DependentUpon>frmkeyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmparagraphdeal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmparagraphdeal.Designer.cs">
+      <DependentUpon>frmparagraphdeal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmpicadd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmpicadd.Designer.cs">
+      <DependentUpon>frmpicadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmpiczip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmpiczip.Designer.cs">
+      <DependentUpon>frmpiczip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProgress.designer.cs">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmrandom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmrandom.Designer.cs">
+      <DependentUpon>frmrandom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRefresh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRefresh.designer.cs">
+      <DependentUpon>frmRefresh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmrepeat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmrepeat.Designer.cs">
+      <DependentUpon>frmrepeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmreplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreplace.Designer.cs">
+      <DependentUpon>frmreplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTH.Designer.cs">
+      <DependentUpon>frmTH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdatePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdatePass.Designer.cs">
+      <DependentUpon>frmUpdatePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmwordtopic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmwordtopic.Designer.cs">
+      <DependentUpon>frmwordtopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gather.cs" />
+    <Compile Include="infos.cs" />
+    <Compile Include="json.cs" />
+    <Compile Include="Loginstatus.cs" />
+    <Compile Include="myarea.cs" />
+    <Compile Include="myhttp.cs" />
+    <Compile Include="Myinfo.cs" />
+    <Compile Include="NetHelper.cs" />
+    <Compile Include="PCA.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="realmNameInfo.cs" />
+    <Compile Include="ReleaseJson.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="Tools.cs" />
+    <Compile Include="upimgstatus.cs" />
+    <Compile Include="WaterImageManage.cs" />
+    <Compile Include="Web References\WebReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmareacs.resx">
+      <DependentUpon>frmareacs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcj.resx">
+      <DependentUpon>frmcj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDig.resx">
+      <DependentUpon>frmDig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmdlhtml.resx">
+      <DependentUpon>frmdlhtml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmgetpic.resx">
+      <DependentUpon>frmgetpic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGG.resx">
+      <DependentUpon>frmGG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHtml.resx">
+      <DependentUpon>frmHtml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmhzc.resx">
+      <DependentUpon>frmhzc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmimg.resx">
+      <DependentUpon>frmimg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmjz.resx">
+      <DependentUpon>frmjz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkeyword.resx">
+      <DependentUpon>frmkeyword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmparagraphdeal.resx">
+      <DependentUpon>frmparagraphdeal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmpicadd.resx">
+      <DependentUpon>frmpicadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmpiczip.resx">
+      <DependentUpon>frmpiczip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProgress.resx">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmrandom.resx">
+      <DependentUpon>frmrandom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRefresh.resx">
+      <DependentUpon>frmRefresh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmrepeat.resx">
+      <DependentUpon>frmrepeat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmreplace.resx">
+      <DependentUpon>frmreplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTH.resx">
+      <DependentUpon>frmTH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdatePass.resx">
+      <DependentUpon>frmUpdatePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmwordtopic.resx">
+      <DependentUpon>frmwordtopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\AutoUpdate.exe.config" />
+    <None Include="bin\Debug\dic\en-US.dic" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\WebReference\Heart.wsdl" />
+    <None Include="Web References\WebReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="64X64.ico" />
+    <Content Include="bin\Debug\AutoUpdate.exe" />
+    <Content Include="bin\Debug\Microsoft.mshtml.dll" />
+    <Content Include="bin\Debug\NetSpell.SpellChecker.dll" />
+    <Content Include="bin\Debug\UpdateList.xml" />
+    <Content Include="bin\Debug\WinHtmlEditor.dll" />
+    <None Include="Web References\WebReference\Heart.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CsharpHttpHelper\CsharpHttpHelper.csproj">
+      <Project>{51e6b448-0805-4d65-b32b-9d97578f470b}</Project>
+      <Name>CsharpHttpHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://123.56.125.147:8099/Heart.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebReference\</RelPath>
+      <UpdateFromURL>http://123.56.125.147:8099/Heart.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>搏世营销系统_WebReference_Heart</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
