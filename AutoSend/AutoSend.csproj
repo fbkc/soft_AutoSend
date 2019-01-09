@@ -88,7 +88,7 @@
     <Reference Include="NetSpell.SpellChecker, Version=2.1.7.39341, Culture=neutral, PublicKeyToken=318b389f0db66e46" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lhc工作\Jsondll\Bin\net20\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\065搏世信息发布系统\AutoSend\bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -147,12 +147,6 @@
     </Compile>
     <Compile Include="frmGG.Designer.cs">
       <DependentUpon>frmGG.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmHtml.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmHtml.Designer.cs">
-      <DependentUpon>frmHtml.cs</DependentUpon>
     </Compile>
     <Compile Include="frmhzc.cs">
       <SubType>Form</SubType>
@@ -301,9 +295,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGG.resx">
       <DependentUpon>frmGG.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHtml.resx">
-      <DependentUpon>frmHtml.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmhzc.resx">
       <DependentUpon>frmhzc.cs</DependentUpon>

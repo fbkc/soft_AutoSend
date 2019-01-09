@@ -34,13 +34,7 @@ namespace AutoSend
             }
             frmMain f = ff as frmMain;
             if (f != null)
-                f.htmlEditor1.BodyInnerHTML = nr;
-            else
-            {
-                frmHtml fh = ff as frmHtml;
-                if (fh != null)
-                    fh.htmlEditor1.BodyInnerHTML = nr;
-            }
+                f.richTextBox1.Text = nr;
             this.DialogResult = DialogResult.OK;
         }
     }

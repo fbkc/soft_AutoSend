@@ -813,6 +813,7 @@ namespace AutoSend
         }
         public static string Upload(string files)
         {
+            //string url = "http://img.hsoow.com/index.php";
             string url = "http://img.hsoow.com/index.php";
             FileInfo info = new FileInfo(files);
             string str2 = string.Empty;
@@ -820,12 +821,12 @@ namespace AutoSend
             NameValueCollection stringDict = new NameValueCollection();
             stringDict.Add("submit", "1");
             stringDict.Add("username", Myinfo.username);
-            stringDict.Add("key", GetMD5(Myinfo.username + "fangyuan888"));
+            stringDict.Add("key", GetMD5(Myinfo.username + "100dh888"));
             stringDict.Add("type", "all");
             stringDict.Add("uptype", "oss");
             try
             {
-                str2 = NetHelper.HttpPostData(url, "uploadimg", info.FullName, stringDict);
+                str2 = NetHelper.HttpPostData(url, "file", info.FullName, stringDict);
                 JObject joo = (JObject)JsonConvert.DeserializeObject(str2);
                 if (joo == null)
                     str2 = "上传失败";

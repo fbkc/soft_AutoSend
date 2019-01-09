@@ -16,7 +16,7 @@ namespace AutoSend
         public frmMain f;
         public frmimg(frmMain myfrm)
         {
-            System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false; 
+            System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             f = myfrm;
         }
@@ -47,21 +47,18 @@ namespace AutoSend
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //
-            MessageBox.Show("因百度新出‘细雨算法’，新上传图片不得包含电话及手机号码。一经发现，立即封号！！！","警告");
-
             //if (myhttp.islogin == "OK")
             //{
-                this.Text = "正在上传图片，请耐心等待，不要离开！";
-                ThreadStart start = null;
-                isstart = "OK";
-                if (start == null)
-                {
-                    start = uppic;
-                }
-                Thread t = new Thread(start);
-                t.IsBackground = true;
-                t.Start();
+            this.Text = "正在上传图片，请耐心等待，不要离开！";
+            ThreadStart start = null;
+            isstart = "OK";
+            if (start == null)
+            {
+                start = uppic;
+            }
+            Thread t = new Thread(start);
+            t.IsBackground = true;
+            t.Start();
             //}
             //else
             //{
@@ -87,11 +84,11 @@ namespace AutoSend
                             this.listView1.Items[i].SubItems[1].Text = "图片超过200K";
                         }
                         else
-                        { 
-                        u = myhttp.Upload(this.listView1.Items[i].Text);
+                        {
+                            u = myhttp.Upload(this.listView1.Items[i].Text);
                             Thread.Sleep(5000);
-                        if (u !="")
-                            this.listView1.Items[i].SubItems[1].Text = u;
+                            if (u != "")
+                                this.listView1.Items[i].SubItems[1].Text = u;
                         }
                         listView1.Refresh();
                     }
@@ -185,7 +182,7 @@ namespace AutoSend
                         s.Append(httpurl);
                 }
             }
-            s=s.Replace("s_", "");
+            s = s.Replace("s_", "");
             if (f.randpic.Text.EndsWith("\r\n") || f.randpic.Text == "")
                 f.randpic.Text += s.ToString();
             else
@@ -196,10 +193,10 @@ namespace AutoSend
         {
             e.Effect = DragDropEffects.Copy;
             String[] str_Drop = (String[])e.Data.GetData(DataFormats.FileDrop, true);//必须用字符串数组  
-            Data_List(listView1, str_Drop[0]);  
+            Data_List(listView1, str_Drop[0]);
         }
         public void Data_List(ListView LV, string F)
-        {            
+        {
             if (F.LastIndexOf(".") == F.Length - 4)
             {
                 if (F.ToLower().EndsWith(".gif") || F.ToLower().EndsWith(".jpg") || F.ToLower().EndsWith(".bmp") || F.ToLower().EndsWith(".png"))
@@ -210,6 +207,6 @@ namespace AutoSend
                     LV.Items.Add(item);
                 }
             }
-        }  
+        }
     }
 }

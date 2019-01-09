@@ -217,7 +217,6 @@ namespace AutoSend
         private void frmMain_Load(object sender, EventArgs e)
         {
             //debugseo();
-            tabControl4.TabPages.RemoveAt(1);
             txtName.Text = this._login_name;
             toolStripStatusLabel1.Text = Myinfo.gginfo;
             lispic = this.txtPics;
@@ -539,7 +538,7 @@ namespace AutoSend
 
                 wz = AShelp.LoadWZ("bak\\WZ");
             }
-            if (wz != null && wz.Count == 27)
+            if (wz != null && wz.Count == 26)
             {
                 txtzhubl.Text = wz[0];
                 txtbl1.Text = wz[1];
@@ -551,32 +550,31 @@ namespace AutoSend
                 txtbl3.Text = wz[5];
                 if (wz[6] == "1")
                     ckbbl3.Checked = true;
-                txtranda.Text = wz[7];
-                txtrandpic.Text = wz[8];
-                txtdl1.Text = wz[9];
-                if (wz[10] == "0")
+                txtrandpic.Text = wz[7];
+                txtdl1.Text = wz[8];
+                if (wz[9] == "0")
                     rbtdl1r.Checked = false;
-                txtdl1row.Text = wz[11];
-                txtdl2.Text = wz[12];
-                if (wz[13] == "0")
+                txtdl1row.Text = wz[10];
+                txtdl2.Text = wz[11];
+                if (wz[12] == "0")
                     rbtdl2r.Checked = false;
-                txtdl2row.Text = wz[14];
-                txtdl3.Text = wz[15];
-                if (wz[16] == "0")
+                txtdl2row.Text = wz[13];
+                txtdl3.Text = wz[14];
+                if (wz[15] == "0")
                     rbtdl3r.Checked = false;
-                txtdl3row.Text = wz[17];
-                txtdl4.Text = wz[18];
-                if (wz[19] == "0")
+                txtdl3row.Text = wz[16];
+                txtdl4.Text = wz[17];
+                if (wz[18] == "0")
                     rbtdl4r.Checked = false;
-                txtdl4row.Text = wz[20];
+                txtdl4row.Text = wz[19];
 
-                txtTitle.Text = wz[21];
-                if (wz[22] == "0")
+                txtTitle.Text = wz[20];
+                if (wz[21] == "0")
                     ckbSCDL.Checked = false;
-                txtkeyword1.Text = wz[23];
-                txtkeyword2.Text = wz[24];
-                txtkeyword3.Text = wz[25];
-                txttishi.Text = wz[26];
+                txtkeyword1.Text = wz[22];
+                txtkeyword2.Text = wz[23];
+                txtkeyword3.Text = wz[24];
+                txttishi.Text = wz[25];
             }
             List<string> add = null;
             try
@@ -715,24 +713,21 @@ namespace AutoSend
                     ckbshut.Checked = true;
                 if (ts[10] == "0")
                     radioButton2.Checked = true;
-                //txtmini.Text = ts[11];
+                txtmini.Text = ts[11];
                 if (ts[12] == "1")
                     checkBox3.Checked = true;
                 else
                     checkBox3.Checked = false;
-                if (!ts[11].Contains("http"))//目的清30
-                    txtrandpic.Text = "";//强制清空图片
-                else
-                    txtrandpic.Text = ts[11];//强制清空图片
+                txtrandpic.Text = ts[13];
                 cbbone.Text = ts[14];
                 comboBox3.Text = ts[15];
-                textBox6.Text = ts[16];
-                textBox1.Text = ts[17];
-                textBox3.Text = ts[18];
-                textBox2.Text = ts[19];
-                textBox4.Text = ts[20];
-                textBox5.Text = ts[21];
-                textBox9.Text = ts[22];
+                txt_pinpai.Text = ts[16];
+                txt_xinghao.Text = ts[17];
+                txt_city.Text = ts[18];
+                txt_ghzl.Text = ts[19];
+                txt_qdl.Text = ts[20];
+                txt_price.Text = ts[21];
+                txt_unit.Text = ts[22];
                 txtFindcode.Text = ts[23];
             }
             try
@@ -1004,14 +999,13 @@ namespace AutoSend
             frmimg f = new frmimg(this);
             f.TopMost = true;
             f.ShowDialog();
-
         }
 
         private void button46_Click(object sender, EventArgs e)
         {
             txtmbname.Focus();
-            this.htmlEditor1.PasteIntoSelection("【标题】");
-            this.htmlEditor1.Focus();
+            richTextBox1.SelectedText = "【标题】";
+            this.richTextBox1.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1029,31 +1023,12 @@ namespace AutoSend
 
         private void cbbone_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Category> list2 = myhttp.LoadChildren("http://www.hsoow.com/ajax.php", cbbone.SelectedValue.ToString());
-            if (list2.Count > 0)
-            {
-                list2.RemoveAt(0);
-                cbbtwo.DisplayMember = "EngName";
-                cbbtwo.ValueMember = "Id";
-                cbbtwo.DataSource = list2;
-                AShelp.SaveCategory(list2, "two");
-            }
+           
         }
 
         private void cbbtwo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbtwo.SelectedValue != null)
-            {
-                List<Category> list2 = myhttp.LoadChildren("http://www.hsoow.com/ajax.php", cbbtwo.SelectedValue.ToString());
-                if (list2.Count > 0)
-                {
-                    list2.RemoveAt(0);
-                    cbbthree.DisplayMember = "EngName";
-                    cbbthree.ValueMember = "Id";
-                    cbbthree.DataSource = list2;
-                    AShelp.SaveCategory(list2, "three");
-                }
-            }
+
         }
 
         private void txtPics_TextChanged(object sender, EventArgs e)
@@ -1307,8 +1282,8 @@ namespace AutoSend
             if (txtzhubl.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【主变量】");
-                this.htmlEditor1.Focus();
+                richTextBox1.SelectedText += "【主变量】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("主变量没有数据");
@@ -1320,8 +1295,8 @@ namespace AutoSend
             if (txtbl1.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【变量1】");
-                this.htmlEditor1.Focus();
+                richTextBox1.SelectedText += "【变量1】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("变量1没有数据");
@@ -1333,8 +1308,8 @@ namespace AutoSend
             if (txtbl2.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【变量2】");
-                this.htmlEditor1.Focus();
+                richTextBox1.SelectedText = "【变量2】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("变量2没有数据");
@@ -1345,8 +1320,8 @@ namespace AutoSend
             if (txtbl3.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【变量3】");
-                this.htmlEditor1.Focus();
+                richTextBox1.SelectedText = "【变量3】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("变量3没有数据");
@@ -1365,8 +1340,8 @@ namespace AutoSend
                 return;
             }
             txtmbname.Focus();
-            this.htmlEditor1.PasteIntoSelection("【段落】");
-            this.htmlEditor1.Focus();
+            richTextBox1.SelectedText = "【段落】";
+            this.richTextBox1.Focus();
         }
 
         private void button55_Click(object sender, EventArgs e)
@@ -1374,8 +1349,8 @@ namespace AutoSend
             if (txtdl2.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【段落2】");
-                this.htmlEditor1.Focus();
+                richTextBox1.Text += "【段落2】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("段落2没有数据");
@@ -1386,8 +1361,8 @@ namespace AutoSend
             if (txtdl3.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【段落3】");
-                this.htmlEditor1.Focus();
+                richTextBox1.Text += "【段落3】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("段落3没有数据");
@@ -1398,8 +1373,8 @@ namespace AutoSend
             if (txtdl4.Lines.Length > 0)
             {
                 txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【段落4】");
-                this.htmlEditor1.Focus();
+                richTextBox1.Text += "【段落4】";
+                this.richTextBox1.Focus();
             }
             else
                 MessageBox.Show("段落4没有数据");
@@ -1413,61 +1388,49 @@ namespace AutoSend
                 return;
             }
             txtmbname.Focus();
-            this.htmlEditor1.PasteIntoSelection("【随机图片】");
-            this.htmlEditor1.Focus();
-        }
-
-        private void button53_Click(object sender, EventArgs e)
-        {
-            if (txtranda.Lines.Length > 0)
-            {
-                txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【随机链接】");
-                this.htmlEditor1.Focus();
-            }
-            else
-                MessageBox.Show("随机链接没有数据");
+            richTextBox1.SelectedText = "【随机图片】";
+            this.richTextBox1.Focus();
         }
 
         private void button58_Click(object sender, EventArgs e)
         {
             txtmbname.Focus();
-            this.htmlEditor1.PasteIntoSelection("【年】");
-            this.htmlEditor1.Focus();
+            richTextBox1.SelectedText = "【年】";
+            this.richTextBox1.Focus();
         }
 
         private void button59_Click(object sender, EventArgs e)
         {
             txtmbname.Focus();
-            this.htmlEditor1.PasteIntoSelection("【月】");
-            this.htmlEditor1.Focus();
+            richTextBox1.SelectedText = "【月】";
+            this.richTextBox1.Focus();
         }
 
         private void button60_Click(object sender, EventArgs e)
         {
             txtmbname.Focus();
-            this.htmlEditor1.PasteIntoSelection("【日】");
-            this.htmlEditor1.Focus();
+            richTextBox1.SelectedText = "【日】";
+            this.richTextBox1.Focus();
         }
 
         private void button98_Click(object sender, EventArgs e)
         {
             Regex reb = new Regex("【标题】");
-            MatchCollection mab = reb.Matches(this.htmlEditor1.BodyInnerHTML);
+            MatchCollection mab = reb.Matches(richTextBox1.Text);
             if (mab.Count > 2)
             {
                 MessageBox.Show("最多插入2个标题");
                 return;
             }
             Regex red = new Regex("【段落】");
-            MatchCollection mad = red.Matches(this.htmlEditor1.BodyInnerHTML);
+            MatchCollection mad = red.Matches(richTextBox1.Text);
             if (mad.Count < 3 || mad.Count > 5)
             {
                 MessageBox.Show("必须插入3到5个段落");
                 return;
             }
             Regex ret = new Regex("【随机图片】");
-            MatchCollection mat = ret.Matches(this.htmlEditor1.BodyInnerHTML);
+            MatchCollection mat = ret.Matches(richTextBox1.Text);
             if (mat.Count < 2 || mat.Count > 5)
             {
                 MessageBox.Show("必须插入2到5张图片");
@@ -1480,28 +1443,28 @@ namespace AutoSend
         {
             //保存模版
             Regex reb = new Regex("【标题】");
-            MatchCollection mab = reb.Matches(this.htmlEditor1.BodyInnerHTML);
+            MatchCollection mab = reb.Matches(richTextBox1.Text);
             if (mab.Count > 2)
             {
                 MessageBox.Show("最多插入2个标题");
                 return;
             }
             Regex red = new Regex("【段落】");
-            MatchCollection mad = red.Matches(this.htmlEditor1.BodyInnerHTML);
+            MatchCollection mad = red.Matches(richTextBox1.Text);
             if (mad.Count < 3 || mad.Count > 4)
             {
                 MessageBox.Show("必须插入3到4个段落");
                 return;
             }
             Regex ret = new Regex("【随机图片】");
-            MatchCollection mat = ret.Matches(this.htmlEditor1.BodyInnerHTML);
+            MatchCollection mat = ret.Matches(richTextBox1.Text);
             if (mat.Count < 2 || mat.Count > 5)
             {
                 MessageBox.Show("必须插入2到5张图片");
                 return;
             }
             string mb = txtmbname.Text.Trim();
-            string html = htmlEditor1.BodyInnerHTML;
+            string html = richTextBox1.Text;
             Regex r = new Regex("style=\"(?<key>.*?)\"");
             html = r.Replace(html, "");
             AShelp.SaveHtml(html, mb);
@@ -1518,15 +1481,6 @@ namespace AutoSend
             MessageBox.Show("保存成功！~~");
         }
 
-        private void button44_Click(object sender, EventArgs e)
-        {
-            //新建模版
-            //txtmbname.Text = "";
-            //htmlEditor1.BodyInnerHTML = "";
-            frmHtml f = new frmHtml(this);
-            f.ShowDialog();
-        }
-
         private void button45_Click(object sender, EventArgs e)
         {
             //显示第一个选择的模版  
@@ -1538,7 +1492,7 @@ namespace AutoSend
                     temp = ckbHtml.GetItemText(ckbHtml.Items[i]);
                     txtmbname.Text = temp;
                     string html = AShelp.LoadHtml(temp);
-                    htmlEditor1.BodyInnerHTML = html;
+                    richTextBox1.Text = html;
                     return;
 
                 }
@@ -1792,20 +1746,9 @@ namespace AutoSend
             }
         }
 
-        private void button32_Click(object sender, EventArgs e)
-        {
-            txtranda.Text = "";
-        }
-
         private void button31_Click(object sender, EventArgs e)
         {
             txtrandpic.Text = "";
-        }
-
-        private void txtranda_TextChanged(object sender, EventArgs e)
-        {
-            label59.Text = string.Format("随机链接，共有{0}行", txtranda.Lines.Length);
-
         }
 
         private void txtrandpic_TextChanged(object sender, EventArgs e)
@@ -2054,7 +1997,6 @@ namespace AutoSend
                 savewz.Add("1");
             else
                 savewz.Add("0");
-            savewz.Add(txtranda.Text);
             savewz.Add(txtrandpic.Text);
             savewz.Add(txtdl1.Text);
             if (rbtdl1r.Checked)
@@ -2154,22 +2096,21 @@ namespace AutoSend
                 teshu.Add("1");
             else
                 teshu.Add("0");
-            //teshu.Add(txtmini.Text);
-            teshu.Add(txtrandpic.Text);//图片占用位置
+            teshu.Add(txtmini.Text);
             if (checkBox3.Checked)//广告词法敏感词
                 teshu.Add("1");
             else
                 teshu.Add("0");
-            teshu.Add("");//原图片位置
+            teshu.Add(txtrandpic.Text);//图片占用位置
             teshu.Add(cbbone.Text.ToString());
             teshu.Add(comboBox3.Text.ToString());
-            teshu.Add(textBox6.Text);
-            teshu.Add(textBox1.Text);
-            teshu.Add(textBox3.Text);
-            teshu.Add(textBox2.Text);
-            teshu.Add(textBox4.Text);
-            teshu.Add(textBox5.Text);
-            teshu.Add(textBox9.Text);
+            teshu.Add(txt_pinpai.Text);
+            teshu.Add(txt_xinghao.Text);
+            teshu.Add(txt_city.Text);
+            teshu.Add(txt_ghzl.Text);
+            teshu.Add(txt_qdl.Text);
+            teshu.Add(txt_price.Text);
+            teshu.Add(txt_unit.Text);
             teshu.Add(txtFindcode.Text);
             AShelp.SaveWZ(teshu, "ts");
             AShelp.SaveWZbak(teshu, "ts");
@@ -2475,13 +2416,11 @@ namespace AutoSend
                     MessageBox.Show("正在发布，请停止后再开始！");
 
                 }
-
             }
             else
             {
                 MessageBox.Show("请登录后再操作！");
             }
-
         }
         private string getPicname(string http)
         {
@@ -2527,27 +2466,27 @@ namespace AutoSend
                     htmllist.Add(ckbHtml.GetItemText(ckbHtml.Items[j]));
                 }
             }
-            if (htmllist.Count < 5)
-            {
-                timer6.Stop();//lhc1
-                iswaiting = false;
-                MessageBox.Show("勾选的文章内容模版不能低于5个！");
-                tabControl1.TabPages[3].Select();
-                isstoppub = true;
-                ispausd = false;
-                isstarttime = false;
-                return;
-            }
-            if (this.dgvpracontent.RowCount < 50)
-            {
-                timer6.Stop();//lhc1
-                iswaiting = false;
-                MessageBox.Show("段落库不能少于50个段落");
-                this.isstoppub = true;
-                this.ispausd = false;
-                this.isstarttime = false;
-                return;
-            }
+            //if (htmllist.Count < 5)
+            //{
+            //    timer6.Stop();//lhc1
+            //    iswaiting = false;
+            //    MessageBox.Show("勾选的文章内容模版不能低于5个！");
+            //    tabControl1.TabPages[3].Select();
+            //    isstoppub = true;
+            //    ispausd = false;
+            //    isstarttime = false;
+            //    return;
+            //}
+            //if (this.dgvpracontent.RowCount < 50)
+            //{
+            //    timer6.Stop();//lhc1
+            //    iswaiting = false;
+            //    MessageBox.Show("段落库不能少于50个段落");
+            //    this.isstoppub = true;
+            //    this.ispausd = false;
+            //    this.isstarttime = false;
+            //    return;
+            //}
             if (txtFindcode.Text.Trim() == "")
             {
                 MessageBox.Show("查询码不能为空");
@@ -2602,17 +2541,17 @@ namespace AutoSend
             foreach (System.Windows.Forms.ListViewItem lvi in lsvdaifa.Items)  //选中项遍历
             {
                 //检测段落库数量
-                if (this.dgvpracontent.RowCount < 5)
-                {
-                    timer6.Stop();//lhc1
-                    iswaiting = false;
-                    MessageBox.Show("段落库段落低于5个,严重影响文章质量，请添加段落");
-                    this.isstoppub = true;
-                    this.ispausd = false;
-                    this.isstarttime = false;
-                    txttishi.Text += "文章发布停止！\r\n";
-                    return;
-                }
+                //if (this.dgvpracontent.RowCount < 5)
+                //{
+                //    timer6.Stop();//lhc1
+                //    iswaiting = false;
+                //    MessageBox.Show("段落库段落低于5个,严重影响文章质量，请添加段落");
+                //    this.isstoppub = true;
+                //    this.ispausd = false;
+                //    this.isstarttime = false;
+                //    txttishi.Text += "文章发布停止！\r\n";
+                //    return;
+                //}
                 q++;
                 //havecont = 0;
                 //havecont = lsvdaifa.Items.Count;
@@ -2686,6 +2625,7 @@ namespace AutoSend
                         {
                             cbid = comboBox3.SelectedValue.ToString();
                         }
+
                         #region 敏感词过滤
                         //手机号码
                         txtgytitle = Regex.Replace(txtgytitle, "0?(13|14|15|16|17|18)[0-9]{9}", " ");
@@ -2705,83 +2645,46 @@ namespace AutoSend
                         //sKeyword2 = changemgc(sKeyword2);
                         //sKeyword3 = changemgc(sKeyword3);
                         #endregion
-                        var d = new StringBuilder();
-                        d.AppendFormat("info[catid]={0}&", cbid);
-                        d.AppendFormat("info[title]={0}&", txtgytitle);
-                        d.AppendFormat("info[keywords][new]={0}&", sKeyword1);// +","+sKeyword2+","+sKeyword3);
-                        d.AppendFormat("style_color={0}&", "");
-                        d.AppendFormat("style_font_weight={0}&", "");
-                        d.AppendFormat("info[pinpai]={0}&", textBox6.Text);
-                        d.AppendFormat("info[danjia]={0}&", textBox1.Text);
-                        d.AppendFormat("info[qiding]={0}&", textBox3.Text);
-                        d.AppendFormat("info[szdi]={0}&", textBox2.Text);
-                        d.AppendFormat("info[gonghuo]={0}&", textBox4.Text);
-                        d.AppendFormat("info[fahuoqx]={0}&", textBox5.Text);
-                        d.AppendFormat("info[content]={0}&", txtgydesc + txtFindcode.Text.Trim());
-                        d.AppendFormat("page_title_value={0}&", "");
-                        d.AppendFormat("add_introduce={0}&", 1);
-                        d.AppendFormat("introcude_length={0}&", 200);
-                        d.AppendFormat("auto_thumb={0}&", 1);
-                        d.AppendFormat("auto_thumb_no={0}&", 1);
-                        d.AppendFormat("info[thumb]={0}&", thumb);
-                        d.AppendFormat("forward={0}&", "");
-                        d.AppendFormat("id={0}&", "");
-                        d.AppendFormat("username={0}&", txtName.Text);
-                        string ss = GetMD5(txtName.Text.Trim() + "fangyuan888");
-                        d.AppendFormat("key={0}&", ss);
-                        d.AppendFormat("json={0}&", "1");
-                        d.AppendFormat("dosubmit={0}&", "提交");
-                        d.AppendFormat("version={0}", "1.0.5.5");
-                        #region 组织发布内容
-                        #region 重新登录获取
-                        if (errcount > 2)
+
+                        string key = GetMD5(txtName.Text.Trim() + "100dh888");
+                        var obj = new
                         {
-                            string key = NetHelper.GetMD5(Myinfo.username + "100dh888");
-                            string dosubmit = "1";
-                            var f = new StringBuilder();
-                            f.AppendFormat("username={0}&", Myinfo.username);
-                            f.AppendFormat("password={0}&", Myinfo.password);
-                            f.AppendFormat("dosubmit={0}&", dosubmit);
-                            f.AppendFormat("key={0}", key);
-                            string realmList = "";//目前所有站
-                            string realmNameInfo = "";//权限站
-                            string login_json = NetHelper.HttpPost("http://vip.hsoow.com/index.php?m=member&c=index&a=mini", f.ToString());
-                            if (login_json != "")
-                            {
-                                // list = (List<CategoryJson>)HttpHelper.JsonToObject<List<CategoryJson>>(main1);
-                                JObject jo = (JObject)JsonConvert.DeserializeObject(login_json);
-                                string code = jo["code"].ToString();
-                                string msg = jo["msg"].ToString();
-                                if (code == "0")//失败
-                                {
-                                    errcount = 2;
-                                    continue;
-                                }
-                                else if (code == "1")//成功
-                                {
-                                    string data = jo["detail"].ToString();
-                                    realmNameInfo = jo["detail"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
-                                    realmList = jo["detail"]["realmList"].ToString();
-                                    List<realmNameInfo> rjlist = (List<realmNameInfo>)HttpHelper.JsonToObject<List<realmNameInfo>>(realmList);
-                                    if (rjlist.Count > 0)
-                                    {
-                                        List<realmNameInfo> rList = new List<realmNameInfo>();
-                                        foreach (realmNameInfo rj in rjlist)
-                                            if (realmNameInfo.Contains(rj.Id) && rj.isUseing == true)
-                                                rList.Add(rj);
-                                        Myinfo.rjlist = rList;
-                                    }
-                                }
-                            }
-                            errcount = 0;
-                        }
-                        #endregion
+                            catid = cbid,//栏目id，新闻相当于一个栏目
+                            title = txtgytitle,//标题
+                            pinpai = txt_pinpai.Text,//品牌
+                            xinghao = txt_xinghao.Text,//产品型号
+                            city = txt_city.Text,//发货城市
+                            gonghuo = txt_ghzl.Text,//供货总量
+                            qiding = txt_qdl.Text,//起订量
+                            price = txt_price.Text,//单价
+                            unit = txt_unit.Text,//计量单位
+                            content =AShelp.UrlEncode(txtgydesc+ txtFindcode.Text.Trim(),Encoding.UTF8) ,//内容
+                            keywords = sKeyword1,//关键词
+                            style_color = "",
+                            style_font_weight = "",
+                            page_title_value = "",
+                            add_introduce = 1,
+                            introcude_length = 200,
+                            auto_thumb = 1,
+                            auto_thumb_no = 1,
+                            thumb,//标题图片
+                            forward = "",
+                            id = "",
+                            username = Myinfo.username,
+                            key,
+                            dosubmit = "提交",
+                            version = "1.0.0.0"
+                        };
+                        string postDataStr = JsonConvert.SerializeObject(obj);
+                        #region 组织发布内容
                         for (int i = 0; i < Myinfo.rjlist.Count; i++)
                         {
                             string host = Myinfo.rjlist[i].realmAddress;
                             if (q % w == i)
                             {
-                                string html = NetHelper.HttpPost(host + "member-public_publish.html", d.ToString());
+                                //string html = NetHelper.HttpPost(host + "member-public_publish.html", d.ToString());
+                                //地址根据不同网站变化，每个地址需要写一个接口
+                                string html = NetHelper.Post("http://39.105.196.3:1874/WebService.asmx/Post", postDataStr);
                                 JObject joo = (JObject)JsonConvert.DeserializeObject(html);
                                 string code = joo["code"].ToString();
                                 string msg = joo["msg"].ToString();
@@ -3291,20 +3194,6 @@ namespace AutoSend
                 }
                 rdindex++;
             }
-            while (wz.Contains("【随机链接】"))
-            {
-                r = new Regex("【随机链接】");
-                txt = AShelp.delspaceStrings(txtranda.Lines);
-                if (txt.Length > 0)
-                {
-                    string t = txt[rnd.Next(txt.Length)];
-                    wz = r.Replace(wz, "<a href='" + t + "'>" + t + "</a>", 1);
-                }
-                else
-                {
-                    break;
-                }
-            }
             while (wz.Contains("【段落】"))
             {
                 Regex regex = new Regex("【段落】");
@@ -3756,7 +3645,7 @@ namespace AutoSend
                     }
 
                 }
-                string htmle = htmlEditor1.BodyInnerHTML;
+                string htmle = richTextBox1.Text;
                 if (htmle != null && htmle.Length > 0)
                 {
                     foreach (string si in s)
@@ -3764,7 +3653,7 @@ namespace AutoSend
                         if (si.Length > 0)
                             htmle = htmle.Replace(si, "");
                     }
-                    htmlEditor1.BodyInnerHTML = htmle; ;
+                    richTextBox1.Text = htmle; ;
                 }
                 textBox32.Text += "内容模版替换完成！\r\n";
             }
@@ -3781,7 +3670,7 @@ namespace AutoSend
                 temp = ckbHtml.GetItemText(ckbHtml.SelectedItems[0]);
                 txtmbname.Text = temp;
                 string html = AShelp.LoadHtml(temp);
-                htmlEditor1.BodyInnerHTML = html;
+                richTextBox1.Text = html;
                 return;
             }
         }
@@ -4082,30 +3971,6 @@ namespace AutoSend
             label57.Text = string.Format("段落6，共有{0}行", txtdl6.Lines.Length);
         }
 
-        private void button113_Click(object sender, EventArgs e)
-        {
-            if (txtdl5.Lines.Length > 0)
-            {
-                txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【段落5】");
-                this.htmlEditor1.Focus();
-            }
-            else
-                MessageBox.Show("段落5没有数据");
-        }
-
-        private void button114_Click(object sender, EventArgs e)
-        {
-            if (txtdl6.Lines.Length > 0)
-            {
-                txtmbname.Focus();
-                this.htmlEditor1.PasteIntoSelection("【段落6】");
-                this.htmlEditor1.Focus();
-            }
-            else
-                MessageBox.Show("段落6没有数据");
-        }
-
         private void button110_Click(object sender, EventArgs e)
         {
 
@@ -4227,7 +4092,7 @@ namespace AutoSend
 
         private void button117_Click(object sender, EventArgs e)
         {
-            string html = htmlEditor1.BodyInnerHTML;
+            string html = richTextBox1.Text;
             frmTH f = new frmTH(html, this);
             f.ShowDialog();
         }
@@ -4286,10 +4151,6 @@ namespace AutoSend
         }
         private void btnobtaindl_Click(object sender, EventArgs e)
         {
-        }
-        private void button119_Click(object sender, EventArgs e)
-        {
-            txtranda.Text = "";
         }
         private void button1100_Click(object sender, EventArgs e)
         {
@@ -4518,8 +4379,6 @@ namespace AutoSend
                 if (code == "1")//成功
                 {
                     string data = jo["detail"].ToString();
-                    expirationTime = jo["detail"]["cmUser"]["expirationTime"].ToString();//到期时间
-                    DateTime.TryParse(expirationTime, out s);
                     realmNameInfo = jo["detail"]["cmUser"]["realmNameInfo"].ToString();//此账号下绑定的域名
                     realmList = jo["detail"]["realmList"].ToString();
                     //rjlist = (List<ReleaseJson>)HttpHelper.JsonToObject<List<ReleaseJson>>(release);
