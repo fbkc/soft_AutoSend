@@ -2690,7 +2690,7 @@ namespace AutoSend
                                 string msg = joo["msg"].ToString();
                                 if (code == "1")//发布成功。
                                 {
-                                    titleurl = joo["data"]["url"].ToString();
+                                    titleurl = joo["detail"]["url"].ToString();
                                     txttishi.Text += "标题:" + title + "发布成功。\r\n";
                                     lvi.SubItems[0].Text = title;
                                     lvi.SubItems[1].Text = titleurl;
