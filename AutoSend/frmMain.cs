@@ -264,84 +264,80 @@ namespace AutoSend
         {
             List<Category> list = new List<Category>();
             Category c = new Category();
-            c.EngName = "通信产品";
-            c.ChsName = "11";
-            list.Add(c);
-            c = new Category();
             c.EngName = "机械模具";
-            c.ChsName = "12";
-            list.Add(c);
-            c = new Category();
-            c.EngName = "工具量具";
-            c.ChsName = "13";
-            list.Add(c);
-            c = new Category();
-            c.EngName = "五金电工";
-            c.ChsName = "14";
+            c.ChsName = "1";
             list.Add(c);
             c = new Category();
             c.EngName = "化工材料";
-            c.ChsName = "15";
+            c.ChsName = "2";
+            list.Add(c);
+            c = new Category();
+            c.EngName = "通信产品";
+            c.ChsName = "3";
+            list.Add(c);
+            c = new Category();
+            c.EngName = "工具量具";
+            c.ChsName = "4";
+            list.Add(c);
+            c = new Category();
+            c.EngName = "五金电工";
+            c.ChsName = "5";
             list.Add(c);
             c = new Category();
             c.EngName = "皮革纺织";
-            c.ChsName = "16";
+            c.ChsName = "6";
             list.Add(c);
             c = new Category();
             c.EngName = "印刷包装";
-            c.ChsName = "17";
+            c.ChsName = "7";
             list.Add(c);
             c = new Category();
             c.EngName = "汽车保养";
-            c.ChsName = "18";
+            c.ChsName = "8";
             list.Add(c);
             c = new Category();
             c.EngName = "矿山能源";
-            c.ChsName = "19";
+            c.ChsName = "9";
             list.Add(c);
             c = new Category();
             c.EngName = "建筑建材";
-            c.ChsName = "20";
+            c.ChsName = "10";
             list.Add(c);
             c = new Category();
             c.EngName = "农机配件";
-            c.ChsName = "21";
+            c.ChsName = "11";
             list.Add(c);
             c = new Category();
             c.EngName = "食品饮料";
-            c.ChsName = "22";
+            c.ChsName = "12";
             list.Add(c);
             c = new Category();
             c.EngName = "养殖种植";
-            c.ChsName = "23";
+            c.ChsName = "13";
             list.Add(c);
             c = new Category();
             c.EngName = "文教数码";
-            c.ChsName = "24";
+            c.ChsName = "14";
             list.Add(c);
             c = new Category();
             c.EngName = "办公日用";
-            c.ChsName = "25";
+            c.ChsName = "15";
             list.Add(c);
             c = new Category();
             c.EngName = "运动休闲";
-            c.ChsName = "26";
+            c.ChsName = "16";
             list.Add(c);
             c = new Category();
             c.EngName = "二手回收";
-            c.ChsName = "27";
+            c.ChsName = "17";
             list.Add(c);
             c = new Category();
             c.EngName = "物流维修";
-            c.ChsName = "28";
+            c.ChsName = "18";
             list.Add(c);
             c = new Category();
             c.EngName = "饰品礼品";
-            c.ChsName = "29";
-            list.Add(c);
-            c = new Category();
-            c.EngName = "商业服务";
-            c.ChsName = "30";
+            c.ChsName = "19";
             list.Add(c);
             return list;
         }
@@ -350,13 +346,8 @@ namespace AutoSend
         {
             List<Category> list = new List<Category>();
             Category c = new Category();
-            c = new Category();
-            c.EngName = "企业新闻";
-            c.ChsName = "32";
-            list.Add(c);
-            c = new Category();
             c.EngName = "行业新闻";
-            c.ChsName = "33";
+            c.ChsName = "20";
             list.Add(c);
             return list;
         }
@@ -1023,7 +1014,7 @@ namespace AutoSend
 
         private void cbbone_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void cbbtwo_SelectedIndexChanged(object sender, EventArgs e)
@@ -2658,7 +2649,7 @@ namespace AutoSend
                             qiding = txt_qdl.Text,//起订量
                             price = txt_price.Text,//单价
                             unit = txt_unit.Text,//计量单位
-                            content =AShelp.UrlEncode(txtgydesc+ txtFindcode.Text.Trim(),Encoding.UTF8) ,//内容
+                            content = AShelp.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(),Encoding.UTF8),//内容
                             keywords = sKeyword1,//关键词
                             style_color = "",
                             style_font_weight = "",
@@ -2690,7 +2681,7 @@ namespace AutoSend
                                 string msg = joo["msg"].ToString();
                                 if (code == "1")//发布成功。
                                 {
-                                    titleurl = joo["data"]["url"].ToString();
+                                    titleurl = joo["detail"]["url"].ToString();
                                     txttishi.Text += "标题:" + title + "发布成功。\r\n";
                                     lvi.SubItems[0].Text = title;
                                     lvi.SubItems[1].Text = titleurl;
