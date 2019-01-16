@@ -2610,13 +2610,12 @@ namespace AutoSend
                             thumb1 = pics[rnd.Next(pics.Length)];
                             thumb2 = pics[rnd.Next(pics.Length)];
                         }
+                        List<string> sList = new List<string>();
                         if (cfb1 && cbbone.SelectedValue != null)
-                            cbid = cbbone.SelectedValue.ToString();
+                            sList.Add(cbbone.SelectedValue.ToString());
                         else if (cfb2 && comboBox3.SelectedValue != null)
-                        {
-                            cbid = comboBox3.SelectedValue.ToString();
-                        }
-
+                            sList.Add(comboBox3.SelectedValue.ToString());
+                        cbid = sList[new Random().Next(sList.Count)];
                         #region 敏感词过滤
                         //手机号码
                         txtgytitle = Regex.Replace(txtgytitle, "0?(13|14|15|16|17|18)[0-9]{9}", " ");
@@ -2636,7 +2635,6 @@ namespace AutoSend
                         //sKeyword2 = changemgc(sKeyword2);
                         //sKeyword3 = changemgc(sKeyword3);
                         #endregion
-
                         string key = GetMD5(txtName.Text.Trim() + "100dh888");
                         var obj = new
                         {
@@ -2649,7 +2647,7 @@ namespace AutoSend
                             qiding = txt_qdl.Text,//起订量
                             price = txt_price.Text,//单价
                             unit = txt_unit.Text,//计量单位
-                            content = AShelp.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(),Encoding.UTF8),//内容
+                            content = HttpUtility.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(),Encoding.UTF8),//内容,UrlEncode编码
                             keywords = sKeyword1,//关键词
                             style_color = "",
                             style_font_weight = "",
