@@ -2673,9 +2673,10 @@ namespace AutoSend
                             string host = Myinfo.rjlist[i].realmAddress;
                             if (q % w == i)
                             {
+                                //http://39.105.196.3:1874/WebService.asmx/Post
                                 //string html = NetHelper.HttpPost(host + "member-public_publish.html", d.ToString());
                                 //地址根据不同网站变化，每个地址需要写一个接口
-                                string html = NetHelper.Post("http://39.105.196.3:1874/WebService.asmx/Post", postDataStr);
+                                string html = NetHelper.Post("http://39.105.196.3/PostService.asmx/Post", postDataStr);
                                 JObject joo = (JObject)JsonConvert.DeserializeObject(html);
                                 string code = joo["code"].ToString();
                                 string msg = joo["msg"].ToString();
