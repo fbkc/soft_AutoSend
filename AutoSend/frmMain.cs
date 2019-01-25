@@ -2636,45 +2636,74 @@ namespace AutoSend
                         //sKeyword3 = changemgc(sKeyword3);
                         #endregion
                         string key = GetMD5(txtName.Text.Trim() + "100dh888");
-                        var obj = new
-                        {
-                            catid = cbid,//栏目id，新闻相当于一个栏目
-                            title = txtgytitle,//标题
-                            pinpai = txt_pinpai.Text,//品牌
-                            xinghao = txt_xinghao.Text,//产品型号
-                            city = txt_city.Text,//发货城市
-                            gonghuo = txt_ghzl.Text,//供货总量
-                            qiding = txt_qdl.Text,//起订量
-                            price = txt_price.Text,//单价
-                            unit = txt_unit.Text,//计量单位
-                            content = HttpUtility.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(),Encoding.UTF8),//内容,UrlEncode编码
-                            keywords = sKeyword1,//关键词
-                            style_color = "",
-                            style_font_weight = "",
-                            page_title_value = "",
-                            add_introduce = 1,
-                            introcude_length = 200,
-                            auto_thumb = 1,
-                            auto_thumb_no = 1,
-                            thumb,//标题图片
-                            forward = "",
-                            id = "",
-                            username = Myinfo.username,
-                            key,
-                            dosubmit = "提交",
-                            version = "1.0.0.0"
-                        };
-                        string postDataStr = JsonConvert.SerializeObject(obj);
+                        //var obj = new
+                        //{
+                        //    catid = cbid,//栏目id，新闻相当于一个栏目
+                        //    title = txtgytitle,//标题
+                        //    pinpai = txt_pinpai.Text,//品牌
+                        //    xinghao = txt_xinghao.Text,//产品型号
+                        //    city = txt_city.Text,//发货城市
+                        //    gonghuo = txt_ghzl.Text,//供货总量
+                        //    qiding = txt_qdl.Text,//起订量
+                        //    price = txt_price.Text,//单价
+                        //    unit = txt_unit.Text,//计量单位
+                        //    content = HttpUtility.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(),Encoding.UTF8),//内容,UrlEncode编码
+                        //    keywords = sKeyword1,//关键词
+                        //    style_color = "",
+                        //    style_font_weight = "",
+                        //    page_title_value = "",
+                        //    add_introduce = 1,
+                        //    introcude_length = 200,
+                        //    auto_thumb = 1,
+                        //    auto_thumb_no = 1,
+                        //    thumb,//标题图片
+                        //    forward = "",
+                        //    id = "",
+                        //    username = Myinfo.username,
+                        //    key,
+                        //    dosubmit = "提交",
+                        //    version = "1.0.0.0"
+                        //};
+                        //string postDataStr = JsonConvert.SerializeObject(obj);
+
+                        StringBuilder strpost = new StringBuilder();
+                        strpost.AppendFormat("catid={0}&", cbid);
+                        strpost.AppendFormat("title={0}&", txtgytitle);
+                        strpost.AppendFormat("pinpai={0}&", txt_pinpai.Text);
+                        strpost.AppendFormat("xinghao={0}&", txt_xinghao.Text);
+                        strpost.AppendFormat("city={0}&", txt_city.Text);
+                        strpost.AppendFormat("gonghuo={0}&", txt_ghzl.Text);
+                        strpost.AppendFormat("qiding={0}&", txt_qdl.Text);
+                        strpost.AppendFormat("price={0}&", txt_price.Text);
+                        strpost.AppendFormat("unit={0}&", txt_unit.Text);
+                        string desc = HttpUtility.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(), Encoding.UTF8);//内容,UrlEncode编码
+                        strpost.AppendFormat("ssss={0}&", "<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim());
+                        strpost.AppendFormat("keywords={0}&", sKeyword1);
+                        strpost.AppendFormat("style_color={0}&", "");
+                        strpost.AppendFormat("style_font_weight={0}&", "");
+                        strpost.AppendFormat("page_title_value={0}&", "");
+                        strpost.AppendFormat("add_introduce={0}&", 1);
+                        strpost.AppendFormat("introcude_length={0}&", 200);
+                        strpost.AppendFormat("auto_thumb={0}&", 1);
+                        strpost.AppendFormat("auto_thumb_no={0}&", 1);
+                        strpost.AppendFormat("thumb={0}&", thumb);
+                        strpost.AppendFormat("forward={0}&", "");
+                        strpost.AppendFormat("id={0}&", "");
+                        strpost.AppendFormat("username={0}&", Myinfo.username);
+                        strpost.AppendFormat("key={0}&", key);
+                        strpost.AppendFormat("dosubmit={0}&", "提交");
+                        strpost.AppendFormat("version={0}&", "1.0.0.0");
+
                         #region 组织发布内容
                         for (int i = 0; i < Myinfo.rjlist.Count; i++)
                         {
                             string host = Myinfo.rjlist[i].realmAddress;
                             if (q % w == i)
                             {
-                                //http://39.105.196.3:1874/WebService.asmx/Post
-                                //string html = NetHelper.HttpPost(host + "member-public_publish.html", d.ToString());
                                 //地址根据不同网站变化，每个地址需要写一个接口
-                                string html = NetHelper.Post("http://39.105.196.3:8173/PostService.asmx/Post", postDataStr);
+                                //string html = NetHelper.Post("http://39.105.196.3:4399/toolWS.asmx/Post", postDataStr);
+
+                                string html = NetHelper.HttpPost("http://39.105.196.3:8173/ModelHandler.ashx?action=moduleHtml", strpost.ToString());
                                 JObject joo = (JObject)JsonConvert.DeserializeObject(html);
                                 string code = joo["code"].ToString();
                                 string msg = joo["msg"].ToString();
