@@ -15,13 +15,13 @@ namespace AutoSend
     {
         private static CookieContainer cookie = new CookieContainer();
 
-        public static string HttpGet(string url, string postDataStr,Encoding enc)
+        public static string HttpGet(string url, string postDataStr, Encoding enc)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + ((postDataStr == "") ? "" : "?") + postDataStr);
             request.Method = "GET";
             request.ContentType = "text/html;charset=UTF-8";
             request.CookieContainer = cookie;
-            
+
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             cookie = request.CookieContainer;
             Stream responseStream = response.GetResponseStream();
@@ -35,7 +35,7 @@ namespace AutoSend
             responseStream.Close();
             return str;
         }
-        
+
         public static string HttpGetUTF(string url, string postDataStr)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + ((postDataStr == "") ? "" : "?") + postDataStr);
@@ -136,14 +136,75 @@ namespace AutoSend
 
             return strValue;//返回Json数据
         }
+        public static string Post1(string url, string postDataStr)
+        {
+            //创建一个HTTP请求 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //Post请求方式 
+            request.Method = "POST";
+            //内容类型
+            request.ContentType = "application/x-www-form-urlencoded";
+
+            //设置参数，并进行URL编码 
+            //虽然我们需要传递给服务器端的实际参数是JsonParas(格式：[{\"UserID\":\"0206001\",\"UserName\":\"ceshi\"}])，
+            //但是需要将该字符串参数构造成键值对的形式（注："paramaters=[{\"UserID\":\"0206001\",\"UserName\":\"ceshi\"}]"），
+            //其中键paramaters为WebService接口函数的参数名，值为经过序列化的Json数据字符串
+            //最后将字符串参数进行Url编码
+            //string paraUrlCoded = System.Web.HttpUtility.UrlEncode("strJson");
+            //paraUrlCoded += "=" + System.Web.HttpUtility.UrlEncode(postDataStr);
+
+            byte[] payload;
+            //将Json字符串转化为字节 
+            payload = System.Text.Encoding.UTF8.GetBytes(postDataStr);
+            //设置请求的ContentLength  
+            request.ContentLength = payload.Length;
+            //发送请求，获得请求流 
+
+            Stream writer;
+            try
+            {
+                writer = request.GetRequestStream();//获取用于写入请求数据的Stream对象
+            }
+            catch (Exception)
+            {
+                writer = null;
+                Console.Write("连接服务器失败!");
+            }
+            //将请求参数写入流
+            writer.Write(payload, 0, payload.Length);
+            writer.Close();//关闭请求流
+
+            String strValue = "";//strValue为http响应所返回的字符流
+            HttpWebResponse response;
+            try
+            {
+                //获得响应流
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                response = ex.Response as HttpWebResponse;
+            }
+            Stream responseStream = response.GetResponseStream();
+            if (responseStream == null)
+            {
+                return string.Empty;
+            }
+            StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+            string str = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+            return str;
+        }
         public static string HttpPost(string url, string postDataStr = "", string refer = "")
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
             request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
+            request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
+            request.ContentType = "application/x-www-form-urlencoded;charset=UTF-8";
             request.CookieContainer = cookie;
             request.ContentLength = 0L;
-            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
             request.Referer = refer;
             if (!string.IsNullOrEmpty(postDataStr))
             {
@@ -155,7 +216,6 @@ namespace AutoSend
             }
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             cookie = request.CookieContainer;
-
             Stream responseStream = response.GetResponseStream();
             if (responseStream == null)
             {
@@ -196,7 +256,7 @@ namespace AutoSend
             response.Close();
             return str;
         }
-        public static string HttpPostR(string url, string postDataStr,string refer)
+        public static string HttpPostR(string url, string postDataStr, string refer)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
             request.Method = "POST";
@@ -204,7 +264,7 @@ namespace AutoSend
             request.CookieContainer = cookie;
             request.ContentLength = 0L;
             request.Referer = refer;
-            
+
             if (!string.IsNullOrEmpty(postDataStr))
             {
                 byte[] bytes = Encoding.UTF8.GetBytes(postDataStr);

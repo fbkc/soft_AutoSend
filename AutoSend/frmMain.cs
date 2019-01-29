@@ -1440,20 +1440,20 @@ namespace AutoSend
                 MessageBox.Show("最多插入2个标题");
                 return;
             }
-            Regex red = new Regex("【段落】");
-            MatchCollection mad = red.Matches(richTextBox1.Text);
-            if (mad.Count < 3 || mad.Count > 4)
-            {
-                MessageBox.Show("必须插入3到4个段落");
-                return;
-            }
-            Regex ret = new Regex("【随机图片】");
-            MatchCollection mat = ret.Matches(richTextBox1.Text);
-            if (mat.Count < 2 || mat.Count > 5)
-            {
-                MessageBox.Show("必须插入2到5张图片");
-                return;
-            }
+            //Regex red = new Regex("【段落】");
+            //MatchCollection mad = red.Matches(richTextBox1.Text);
+            //if (mad.Count < 3 || mad.Count > 4)
+            //{
+            //    MessageBox.Show("必须插入3到4个段落");
+            //    return;
+            //}
+            //Regex ret = new Regex("【随机图片】");
+            //MatchCollection mat = ret.Matches(richTextBox1.Text);
+            //if (mat.Count < 2 || mat.Count > 5)
+            //{
+            //    MessageBox.Show("必须插入2到5张图片");
+            //    return;
+            //}
             string mb = txtmbname.Text.Trim();
             string html = richTextBox1.Text;
             Regex r = new Regex("style=\"(?<key>.*?)\"");
@@ -2676,8 +2676,9 @@ namespace AutoSend
                         strpost.AppendFormat("qiding={0}&", txt_qdl.Text);
                         strpost.AppendFormat("price={0}&", txt_price.Text);
                         strpost.AppendFormat("unit={0}&", txt_unit.Text);
-                        string desc = HttpUtility.UrlEncode("<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim(), Encoding.UTF8);//内容,UrlEncode编码
-                        strpost.AppendFormat("ssss={0}&", "<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim());
+                        string desc = "<p>" + txtgydesc + "</p>" + txtFindcode.Text.Trim();//内容,UrlEncode编码
+                        //strpost.AppendFormat("content={0}&", Tools.Encode(desc,"12345678","87654321")); 
+                        strpost.AppendFormat("content={0}&", desc);
                         strpost.AppendFormat("keywords={0}&", sKeyword1);
                         strpost.AppendFormat("style_color={0}&", "");
                         strpost.AppendFormat("style_font_weight={0}&", "");

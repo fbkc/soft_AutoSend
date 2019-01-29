@@ -63,17 +63,22 @@ namespace AutoSend
 
             string key = NetHelper.GetMD5(name + "100dh888");
             string dosubmit = "1";
-            var obj = new
-            {
-                username = name,
-                password = pass,
-                dosubmit,
-                key
-            };
-            string postDataStr = JsonConvert.SerializeObject(obj);
+            //var obj = new
+            //{
+            //    username = name,
+            //    password = pass,
+            //    dosubmit,
+            //    key
+            //};
+            //string postDataStr = JsonConvert.SerializeObject(obj);
+            StringBuilder strpost = new StringBuilder();
+            strpost.AppendFormat("username={0}&", name);
+            strpost.AppendFormat("password={0}&", pass);
+            strpost.AppendFormat("dosubmit={0}&", dosubmit);
+            strpost.AppendFormat("key={0}&", key);
             try
             {
-                string login_json = NetHelper.Post("http://39.105.196.3:1874/WebService.asmx/Login", postDataStr);
+                string login_json = NetHelper.HttpPost("http://39.105.196.3:4399/LoginHandler.ashx?action=Login", strpost.ToString());
                 if (login_json != "")
                 {
                     // list = (List<CategoryJson>)HttpHelper.JsonToObject<List<CategoryJson>>(main1);

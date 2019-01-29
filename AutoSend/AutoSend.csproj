@@ -82,13 +82,16 @@
     <StartupObject>AutoSend.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JWT">
+      <HintPath>D:\toolWebsevice\toolWebsevice\JWT.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="NetSpell.SpellChecker, Version=2.1.7.39341, Culture=neutral, PublicKeyToken=318b389f0db66e46" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lhc工作\Jsondll\Bin\net20\Newtonsoft.Json.dll</HintPath>
+      <HintPath>.\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -388,6 +391,9 @@
     <Content Include="bin\Debug\NetSpell.SpellChecker.dll" />
     <Content Include="bin\Debug\UpdateList.xml" />
     <Content Include="bin\Debug\WinHtmlEditor.dll" />
+    <Content Include="JWT.dll" />
+    <Content Include="Newtonsoft.Json.dll" />
+    <Content Include="NVelocity.dll" />
     <None Include="Web References\WebReference\Heart.disco" />
   </ItemGroup>
   <ItemGroup>
