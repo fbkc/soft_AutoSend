@@ -78,7 +78,7 @@ namespace AutoSend
             strpost.AppendFormat("key={0}&", key);
             try
             {
-                string login_json = NetHelper.HttpPost("http://39.105.196.3:4399/LoginHandler.ashx?action=Login", strpost.ToString());
+                string login_json = NetHelper.HttpPost("http://tool.100dh.cn/LoginHandler.ashx?action=Login", strpost.ToString());
                 if (login_json != "")
                 {
                     // list = (List<CategoryJson>)HttpHelper.JsonToObject<List<CategoryJson>>(main1);

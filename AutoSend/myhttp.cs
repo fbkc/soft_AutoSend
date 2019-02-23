@@ -813,17 +813,18 @@ namespace AutoSend
         }
         public static string Upload(string files)
         {
-            //string url = "http://img.hsoow.com/index.php";
-            string url = "http://39.105.196.3:8080/api/informationHandler.ashx?action=uploadpic&productId=1";
+            //上传到服务器tool域名下
+            string url = "http://tool.100dh.cn/UploadImgHandler.ashx";
             FileInfo info = new FileInfo(files);
             string str2 = string.Empty;
 
             NameValueCollection stringDict = new NameValueCollection();
-            stringDict.Add("submit", "1");
-            //stringDict.Add("username", Myinfo.username);
-            //stringDict.Add("key", GetMD5(Myinfo.username + "100dh888"));
-            //stringDict.Add("type", "all");
+            stringDict.Add("username", Myinfo.username);
+            stringDict.Add("productId", "1");
+            stringDict.Add("key", GetMD5(Myinfo.username + "100dh888"));
+            stringDict.Add("type", "SOFT");//数据库可增加一个“SOFT/YUN”字段，暂未加
             //stringDict.Add("uptype", "oss");
+            stringDict.Add("submit", "1");
             try
             {
                 str2 = NetHelper.HttpPostData(url, "file", info.FullName, stringDict);
@@ -834,7 +835,7 @@ namespace AutoSend
                 {
                     string code = joo["code"].ToString();
                     if (code == "1")
-                        str2 = joo["data"]["url"].ToString();
+                        str2 = joo["detail"]["imgUrl"].ToString();
                     if (code == "0")
                         str2 = joo["msg"].ToString();
                 }
