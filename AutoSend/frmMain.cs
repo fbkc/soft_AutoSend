@@ -2701,8 +2701,9 @@ namespace AutoSend
                             string host = Myinfo.rjlist[i].realmAddress;
                             if (q % w == i)
                             {
+                                var obj = new { userId="1" };
                                 //地址根据不同网站变化，每个地址需要写一个接口
-                                //string html = NetHelper.Post("http://39.105.196.3:4399/toolWS.asmx/Post", postDataStr);
+                                //string html = NetHelper.Post("http://39.105.196.3:4399/toolWS.asmx/Post", obj.ToString());
 
                                 string html = NetHelper.HttpPost("http://xinxi.100dh.cn/handler/ModelHandler.ashx?action=moduleHtml", strpost.ToString());
                                 JObject joo = (JObject)JsonConvert.DeserializeObject(html);
@@ -2741,12 +2742,12 @@ namespace AutoSend
                                 }
                                 else if (code == "0")
                                 {
-                                    //if (msg.Contains("今日投稿已超过限制数"))
-                                    //{
-                                    //    txttishi.Text += "提示信息：本栏发布数量已完成！\r\n";
-                                    //    isstoppub = true;
-                                    //    return;
-                                    //}
+                                    if (msg.Contains("今日投稿已超过限制数"))
+                                    {
+                                        txttishi.Text += "提示信息：本栏发布数量已完成！\r\n";
+                                        isstoppub = true;
+                                        return;
+                                    }
                                     if (msg.ToString().Contains("信息发布过快，请隔60秒再提交！"))
                                     {
                                         txttishi.Text += "出错:信息发布过快，请隔60秒再提交！\r\n";
