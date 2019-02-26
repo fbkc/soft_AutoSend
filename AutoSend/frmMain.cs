@@ -2399,6 +2399,7 @@ namespace AutoSend
                         t.Abort();
                     t = new Thread(start);
                     t.IsBackground = true;
+                    t.Name = "aaaaa";
                     t.Start();
                     isstoppub = false;
                 }
