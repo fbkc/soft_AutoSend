@@ -347,7 +347,7 @@ namespace AutoSend
             List<Category> list = new List<Category>();
             Category c = new Category();
             c.EngName = "行业新闻";
-            c.ChsName = "20";
+            c.ChsName = "22";
             list.Add(c);
             return list;
         }
@@ -2630,11 +2630,11 @@ namespace AutoSend
                         //txtgydesc = Regex.Replace(txtgydesc, @"((http|ftp|https)://)(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?", " ");
                         //txtgydesc = Regex.Replace(txtgydesc, @"(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?", " ");
                         //敏感词过滤
-                        //txtgytitle = changemgc(txtgytitle);
-                        //txtgydesc = changemgc(txtgydesc);
-                        //sKeyword1 = changemgc(sKeyword1);
-                        //sKeyword2 = changemgc(sKeyword2);
-                        //sKeyword3 = changemgc(sKeyword3);
+                        txtgytitle = changemgc(txtgytitle);
+                        txtgydesc = changemgc(txtgydesc);
+                        sKeyword1 = changemgc(sKeyword1);
+                        sKeyword2 = changemgc(sKeyword2);
+                        sKeyword3 = changemgc(sKeyword3);
                         #endregion
                         string key = GetMD5(txtName.Text.Trim() + "100dh888");
                         //var obj = new
@@ -2702,7 +2702,7 @@ namespace AutoSend
                             string host = Myinfo.rjlist[i].realmAddress;
                             if (q % w == i)
                             {
-                                var obj = new { userId="1" };
+                                //var obj = new { userId="1" };
                                 //地址根据不同网站变化，每个地址需要写一个接口
                                 //string html = NetHelper.Post("http://39.105.196.3:4399/toolWS.asmx/Post", obj.ToString());
 
