@@ -2432,7 +2432,7 @@ namespace AutoSend
         private bool isPubOver = false;
         private void pubtitle()
         {
-            //mgcs = getmgc();
+            mgcs = getmgc();
             bool cfb1 = true, cfb2 = true, cfb3 = true, cfb4 = true;
             cfb1 = ckbfb1.Checked;
             cfb2 = ckbfb5.Checked;
