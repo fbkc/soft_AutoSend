@@ -2633,8 +2633,6 @@ namespace AutoSend
                         txtgytitle = changemgc(txtgytitle);
                         txtgydesc = changemgc(txtgydesc);
                         sKeyword1 = changemgc(sKeyword1);
-                        sKeyword2 = changemgc(sKeyword2);
-                        sKeyword3 = changemgc(sKeyword3);
                         #endregion
                         string key = GetMD5(txtName.Text.Trim() + "100dh888");
                         //var obj = new
@@ -2677,8 +2675,7 @@ namespace AutoSend
                         strpost.AppendFormat("qiding={0}&", txt_qdl.Text);
                         strpost.AppendFormat("price={0}&", txt_price.Text);
                         strpost.AppendFormat("unit={0}&", txt_unit.Text);
-                        string desc = txtgydesc + "<p>" + txtFindcode.Text.Trim() + "</p>";//内容,UrlEncode编码
-                        //strpost.AppendFormat("content={0}&", Tools.Encode(desc,"12345678","87654321")); 
+                        string desc = txtgydesc + "<p>" + txtFindcode.Text.Trim() + "</p>";//内容,UrlEncode编码 
                         strpost.AppendFormat("content={0}&", desc);
                         strpost.AppendFormat("keywords={0}&", sKeyword1);
                         strpost.AppendFormat("style_color={0}&", "");
