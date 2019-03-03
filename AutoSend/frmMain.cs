@@ -2611,12 +2611,12 @@ namespace AutoSend
                             thumb1 = pics[rnd.Next(pics.Length)];
                             thumb2 = pics[rnd.Next(pics.Length)];
                         }
-                        List<string> sList = new List<string>();
-                        if (cfb1 && cbbone.SelectedValue != null)
-                            sList.Add(cbbone.SelectedValue.ToString());
-                        if (cfb2 && comboBox3.SelectedValue != null)
-                            sList.Add(comboBox3.SelectedValue.ToString());
-                        cbid = sList[new Random().Next(sList.Count)];
+                        
+                        //if (cfb1 && cbbone.SelectedValue != null)
+                            
+                        //if (cfb2 && comboBox3.SelectedValue != null)
+                            
+                        cbid =new Random().Next(23).ToString();
                         #region 敏感词过滤
                         //手机号码
                         txtgytitle = Regex.Replace(txtgytitle, "0?(13|14|15|16|17|18)[0-9]{9}", " ");
