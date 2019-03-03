@@ -3064,16 +3064,7 @@ namespace AutoSend
             Random rnd = new Random();
             string[] txt;
             string mybl = "";
-            if (wz.StartsWith("<P>【标题】"))
-            {
-                int tmp = wz.IndexOf("【标题】"); //获取标题第一次出现的索引值
-                wz = wz.Remove(tmp, 4);
-                wz = wz.Insert(tmp, "原标题： 【标题】");
-            }
-            if (wz.Contains("【标题】"))
-            {
-                wz = wz.Replace("【标题】", title);
-            }
+           
             if (txtTitle.Text.Contains("【主变量】"))
             {
                 if (s.Trim() != "")
@@ -3170,37 +3161,6 @@ namespace AutoSend
                     }
                 }
             }
-            if (txtTitle.Text.Contains("【变量3】"))
-            {
-                mybl = "";
-                foreach (string z in txtbl3.Lines)
-                {
-                    if (title.Contains(z))
-                    {
-                        mybl = z;
-                        break;
-                    }
-                }
-                wz = wz.Replace("【变量3】", mybl);
-            }
-            else
-            {
-                while (wz.Contains("【变量3】"))
-                {
-                    r = new Regex("【变量3】");
-                    txt = AShelp.delspaceStrings(txtbl3.Lines);
-                    if (txt.Length > 0)
-                    {
-                        string t = txt[rnd.Next(txt.Length)];
-                        wz = r.Replace(wz, t, 1);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
             int rdindex = 0, indext = 0;
             txt = AShelp.delspaceStrings(txtrandpic.Lines);
             txt = AShelp.RandomStrings(txt);
@@ -3212,13 +3172,17 @@ namespace AutoSend
                 {
                     indext = rdindex % txt.Length;
                     string t = txt[indext];
-                    wz = r.Replace(wz, "<p><img src=\"" + t + "\" /></p>", 1);
+                    wz = r.Replace(wz, "<p><img src=\"" + t + "\" alt='【标题】' width='600' height='400' /></p>", 1);
                 }
                 else
                 {
                     break;
                 }
                 rdindex++;
+            }
+            if (wz.Contains("【标题】"))
+            {
+                wz = wz.Replace("【标题】", title);
             }
             while (wz.Contains("【段落】"))
             {
@@ -3233,116 +3197,10 @@ namespace AutoSend
                     string str = dataGridViewRow.Cells[0].Value.ToString();
                     int num3 = this.achelp.ExcuteSql("update paragraph set UsedCount=UsedCount+1 where ID=" + str);
                     string text2 = dataGridViewRow.Cells[2].Value.ToString();
-                    wz = regex.Replace(wz, "<p>" + text2 + "</p>", 1);
+                    wz = regex.Replace(wz, "<p>" + text2.Replace("\u3000\u3000", "") + "</p>", 1);
                 }
                 catch (Exception ex)
                 {
-                }
-            }
-            while (wz.Contains("【段落2】"))
-            {
-                r = new Regex("【段落2】");
-                if (radioButton11.Checked)
-                {
-                    txt = txtdl2.Lines;
-                }
-                else
-                {
-                    txt = AShelp.delspaceStrings(txtdl2.Text.Split(new string[] { textBox12.Text.Trim() }, StringSplitOptions.RemoveEmptyEntries));
-                }
-
-                if (txt.Length > 0)
-                {
-                    string t = txt[rnd.Next(txt.Length)];
-                    wz = r.Replace(wz, t, 1);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            while (wz.Contains("【段落3】"))
-            {
-                r = new Regex("【段落3】");
-                if (radioButton13.Checked)
-                {
-                    txt = txtdl3.Lines;
-                }
-                else
-                {
-                    txt = AShelp.delspaceStrings(txtdl3.Text.Split(new string[] { textBox13.Text.Trim() }, StringSplitOptions.RemoveEmptyEntries));
-                }
-                if (txt.Length > 0)
-                {
-                    string t = txt[rnd.Next(txt.Length)];
-                    wz = r.Replace(wz, t, 1);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            while (wz.Contains("【段落4】"))
-            {
-                r = new Regex("【段落4】");
-                if (radioButton15.Checked)
-                {
-                    txt = txtdl4.Lines;
-                }
-                else
-                {
-                    txt = AShelp.delspaceStrings(txtdl4.Text.Split(new string[] { textBox14.Text.Trim() }, StringSplitOptions.RemoveEmptyEntries));
-                }
-                if (txt.Length > 0)
-                {
-                    string t = txt[rnd.Next(txt.Length)];
-                    wz = r.Replace(wz, t, 1);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            while (wz.Contains("【段落5】"))
-            {
-                r = new Regex("【段落5】");
-                if (radioButton17.Checked)
-                {
-                    txt = txtdl5.Lines;
-                }
-                else
-                {
-                    txt = AShelp.delspaceStrings(txtdl5.Text.Split(new string[] { textBox15.Text.Trim() }, StringSplitOptions.RemoveEmptyEntries));
-                }
-                if (txt.Length > 0)
-                {
-                    string t = txt[rnd.Next(txt.Length)];
-                    wz = r.Replace(wz, t, 1);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            while (wz.Contains("【段落6】"))
-            {
-                r = new Regex("【段落6】");
-                if (radioButton21.Checked)
-                {
-                    txt = txtdl6.Lines;
-                }
-                else
-                {
-                    txt = AShelp.delspaceStrings(txtdl6.Text.Split(new string[] { textBox18.Text.Trim() }, StringSplitOptions.RemoveEmptyEntries));
-                }
-                if (txt.Length > 0)
-                {
-                    string t = txt[rnd.Next(txt.Length)];
-                    wz = r.Replace(wz, t, 1);
-                }
-                else
-                {
-                    break;
                 }
             }
             while (wz.Contains("【年】"))
