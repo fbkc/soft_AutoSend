@@ -3157,6 +3157,11 @@ namespace AutoSend
                     }
                 }
             }
+            if (wz.Contains("【标题】"))
+            {
+                wz = wz.Replace("【标题】","<p>"+ title+"</p>");
+            }
+
             int rdindex = 0, indext = 0;
             txt = AShelp.delspaceStrings(txtrandpic.Lines);
             txt = AShelp.RandomStrings(txt);
