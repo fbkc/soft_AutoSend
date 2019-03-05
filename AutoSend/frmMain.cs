@@ -2524,8 +2524,11 @@ namespace AutoSend
             string prehtml = "";
             int havecont = 0;
             havecont = lsvdaifa.Items.Count;
+            List<string> slist = new List<string>();
+            slist.Add("http://bid.10huan.com/hyzx/handler/ModelHandler.ashx?action=moduleHtml");
+            slist.Add("http://www.16fafa.cn/hyfl/handler/ModelHandler.ashx?action=moduleHtml");
             int q = -1;
-            int w = Myinfo.rjlist.Count;
+            int w = slist.Count;
             if (w < 1)
             { MessageBox.Show("您没有权限发布信息"); return; }
             if (havecont > 0 && iswaiting)
@@ -2611,12 +2614,12 @@ namespace AutoSend
                             thumb1 = pics[rnd.Next(pics.Length)];
                             thumb2 = pics[rnd.Next(pics.Length)];
                         }
-                        
+
                         //if (cfb1 && cbbone.SelectedValue != null)
-                            
+
                         //if (cfb2 && comboBox3.SelectedValue != null)
-                            
-                        cbid =new Random().Next(23).ToString();
+
+                        cbid = new Random().Next(23).ToString();
                         #region 敏感词过滤
                         //手机号码
                         txtgytitle = Regex.Replace(txtgytitle, "0?(13|14|15|16|17|18)[0-9]{9}", " ");
@@ -2693,66 +2696,118 @@ namespace AutoSend
                         strpost.AppendFormat("dosubmit={0}&", "提交");
                         strpost.AppendFormat("version={0}&", "1.0.0.0");
 
-                        List<string> slist = new List<string>();
-                        slist.Add("http://bid.10huan.com/hyzx/handler/ModelHandler.ashx?action=moduleHtml");
-                        slist.Add("http://www.16fafa.cn/hyfl/handler/ModelHandler.ashx?action=moduleHtml");
                         #region 组织发布内容
                         for (int i = 0; i < slist.Count; i++)
                         {
                             //string host = Myinfo.rjlist[i].realmAddress;
-                            //if (q % w == i)
-                            //{
-                            //var obj = new { userId="1" };
-                            //地址根据不同网站变化，每个地址需要写一个接口
-                            //string html = NetHelper.Post("http://39.105.196.3:4399/toolWS.asmx/Post", obj.ToString());
-
-                            string html = NetHelper.HttpPost(slist[i], strpost.ToString());
-                            JObject joo = (JObject)JsonConvert.DeserializeObject(html);
-                            string code = joo["code"].ToString();
-                            string msg = joo["msg"].ToString();
-                            if (code == "1")//发布成功。
+                            if (q % w == i)
                             {
-                                titleurl = joo["detail"]["url"].ToString();
-                                txttishi.Text += "标题:" + title + "发布成功。\r\n";
-                                lvi.SubItems[0].Text = title;
-                                lvi.SubItems[1].Text = titleurl;
-                                lsvdaifa.Items.Remove(lvi); // 按索引移除                                     
-                                lsvchenggong.Items.Add(lvi.Clone() as ListViewItem); cgnum++;
-                                UpdateTabNum();
-                                txttishi.Text += "链接:" + titleurl + "\r\n";
-                                //随机等待0秒
-                                //ping baidu                                    
-                                baidumsg = myhttp.postToPing(titleurl);
-                                txttishi.Text += "链接ping给百度完毕\r\n";
-                                //webBrowser4.Navigate(titleurl);
-                                //等待秒数
-                                if (havecont > 1)
+                                //地址根据不同网站变化，每个地址需要写一个接口
+                                //string html = NetHelper.Post("http://39.105.196.3:4399/toolWS.asmx/Post", obj.ToString());
+                                string html = NetHelper.HttpPost(slist[i], strpost.ToString());
+                                JObject joo = (JObject)JsonConvert.DeserializeObject(html);
+                                string code = joo["code"].ToString();
+                                string msg = joo["msg"].ToString();
+                                if (code == "1")//发布成功。
                                 {
+                                    titleurl = joo["detail"]["url"].ToString();
+                                    txttishi.Text += "标题:" + title + "发布成功。\r\n";
+                                    lvi.SubItems[0].Text = title;
+                                    lvi.SubItems[1].Text = titleurl;
+                                    lsvdaifa.Items.Remove(lvi); // 按索引移除                                     
+                                    lsvchenggong.Items.Add(lvi.Clone() as ListViewItem); cgnum++;
+                                    UpdateTabNum();
+                                    txttishi.Text += "链接:" + titleurl + "\r\n";
+                                    //随机等待0秒
+                                    //ping baidu                                    
+                                    baidumsg = myhttp.postToPing(titleurl);
+                                    txttishi.Text += "链接ping给百度完毕\r\n";
+                                    //webBrowser4.Navigate(titleurl);
+                                    //等待秒数
+                                    if (havecont > 1)
+                                    {
+                                        sleeptime = stime + rnd.Next(etime - stime);
+                                        txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
+                                        waitsecond = sleeptime;
+                                        isstarttime = true;
+                                        Thread.Sleep(sleeptime * 1000);
+                                    }
+                                    else
+                                    {
+                                        txttishi.Text += "最后一条数据发送完成！\r\n";
+                                        havecont = 0;
+                                    }
+                                    continue;//再发送本栏目信息
+                                }
+                                else if (code == "0")
+                                {
+                                    if (msg.Contains("今日投稿已超过限制数"))
+                                    {
+                                        txttishi.Text += "提示信息：本栏发布数量已完成！\r\n";
+                                        isstoppub = true;
+                                        return;
+                                    }
+                                    if (msg.ToString().Contains("信息发布过快，请隔60秒再提交！"))
+                                    {
+                                        txttishi.Text += "出错:信息发布过快，请隔60秒再提交！\r\n";
+                                        //lvi.SubItems[1].Text = "信息发布过快，请隔60秒再提交！";
+                                        lvi.SubItems[1].Text = "等待发送";
+                                        lsvdaifa.Items.Remove(lvi); // 按索引移除 
+                                        lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
+                                                                                         //lsvshibai.Items.Add(lvi.Clone() as ListViewItem); 
+                                        sbnum++;
+                                        UpdateTabNum();
+                                        sleeptime = stime + rnd.Next(etime - stime);
+                                        txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
+                                        waitsecond = sleeptime;
+                                        isstarttime = true;
+                                        Thread.Sleep(sleeptime * 1000);
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        txttishi.Text += "出错:" + msg + "\r\n";
+                                        //lvi.SubItems[1].Text = msg;
+                                        lvi.SubItems[1].Text = "等待发送";
+                                        lsvdaifa.Items.Remove(lvi); // 按索引移除 
+                                        lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
+                                                                                         //lsvshibai.Items.Add(lvi.Clone() as ListViewItem); sbnum++;
+                                        UpdateTabNum();
+                                        sleeptime = stime + rnd.Next(etime - stime);
+                                        txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
+                                        waitsecond = sleeptime;
+                                        isstarttime = true;
+                                        Thread.Sleep(sleeptime * 1000);
+                                        continue;
+                                    }
+                                }
+                                else if (code == "2")//停
+                                {
+                                    txttishi.Text += msg + "\r\n";
+                                    isstoppub = true;
+                                    return;
+                                }
+                                else if (html.Contains("无法解析此远程名称") || html.Contains("无法连接到远程服务器") || html.Contains("remote name could not be resolved"))
+                                {
+                                    //lvi.SubItems[1].Text = "网络无法连接！";
+                                    lvi.SubItems[1].Text = "等待发送";
+                                    lsvdaifa.Items.Remove(lvi); // 按索引移除 
+                                    lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
+                                                                                     //lsvshibai.Items.Add(lvi.Clone() as ListViewItem); 
+                                    sbnum++;
+                                    txttishi.Text += "网络无法连接！\r\n";
                                     sleeptime = stime + rnd.Next(etime - stime);
                                     txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
                                     waitsecond = sleeptime;
                                     isstarttime = true;
                                     Thread.Sleep(sleeptime * 1000);
+                                    continue;//再发送本栏目信息
                                 }
                                 else
                                 {
-                                    txttishi.Text += "最后一条数据发送完成！\r\n";
-                                    havecont = 0;
-                                }
-                                continue;//再发送本栏目信息
-                            }
-                            else if (code == "0")
-                            {
-                                if (msg.Contains("今日投稿已超过限制数"))
-                                {
-                                    txttishi.Text += "提示信息：本栏发布数量已完成！\r\n";
-                                    isstoppub = true;
-                                    return;
-                                }
-                                if (msg.ToString().Contains("信息发布过快，请隔60秒再提交！"))
-                                {
-                                    txttishi.Text += "出错:信息发布过快，请隔60秒再提交！\r\n";
-                                    //lvi.SubItems[1].Text = "信息发布过快，请隔60秒再提交！";
+                                    txttishi.Text += "出错:情况未知，请查看日志！\r\n";
+                                    AShelp.SaveTXT(html, Application.StartupPath + "\\错误记录\\" + title + ".txt");
+                                    //lvi.SubItems[1].Text = Application.StartupPath + "\\错误记录\\" + title + ".txt";
                                     lvi.SubItems[1].Text = "等待发送";
                                     lsvdaifa.Items.Remove(lvi); // 按索引移除 
                                     lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
@@ -2766,71 +2821,15 @@ namespace AutoSend
                                     Thread.Sleep(sleeptime * 1000);
                                     continue;
                                 }
-                                else
-                                {
-                                    txttishi.Text += "出错:" + msg + "\r\n";
-                                    //lvi.SubItems[1].Text = msg;
-                                    lvi.SubItems[1].Text = "等待发送";
-                                    lsvdaifa.Items.Remove(lvi); // 按索引移除 
-                                    lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
-                                                                                     //lsvshibai.Items.Add(lvi.Clone() as ListViewItem); sbnum++;
-                                    UpdateTabNum();
-                                    sleeptime = stime + rnd.Next(etime - stime);
-                                    txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
-                                    waitsecond = sleeptime;
-                                    isstarttime = true;
-                                    Thread.Sleep(sleeptime * 1000);
-                                    continue;
-                                }
+                                //    }
+                                //}
+                                //}
+                                //catch (Exception ex)
+                                //{
+                                //    continue;
+                                //}
+                                #endregion
                             }
-                            else if (code == "2")//停
-                            {
-                                txttishi.Text += msg + "\r\n";
-                                isstoppub = true;
-                                return;
-                            }
-                            else if (html.Contains("无法解析此远程名称") || html.Contains("无法连接到远程服务器") || html.Contains("remote name could not be resolved"))
-                            {
-                                //lvi.SubItems[1].Text = "网络无法连接！";
-                                lvi.SubItems[1].Text = "等待发送";
-                                lsvdaifa.Items.Remove(lvi); // 按索引移除 
-                                lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
-                                                                                 //lsvshibai.Items.Add(lvi.Clone() as ListViewItem); 
-                                sbnum++;
-                                txttishi.Text += "网络无法连接！\r\n";
-                                sleeptime = stime + rnd.Next(etime - stime);
-                                txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
-                                waitsecond = sleeptime;
-                                isstarttime = true;
-                                Thread.Sleep(sleeptime * 1000);
-                                continue;//再发送本栏目信息
-                            }
-                            else
-                            {
-                                txttishi.Text += "出错:情况未知，请查看日志！\r\n";
-                                AShelp.SaveTXT(html, Application.StartupPath + "\\错误记录\\" + title + ".txt");
-                                //lvi.SubItems[1].Text = Application.StartupPath + "\\错误记录\\" + title + ".txt";
-                                lvi.SubItems[1].Text = "等待发送";
-                                lsvdaifa.Items.Remove(lvi); // 按索引移除 
-                                lsvdaifa.Items.Add(lvi.Clone() as ListViewItem); //失败标题重新加入代发列表
-                                                                                 //lsvshibai.Items.Add(lvi.Clone() as ListViewItem); 
-                                sbnum++;
-                                UpdateTabNum();
-                                sleeptime = stime + rnd.Next(etime - stime);
-                                txttishi.Text += "随机等待" + sleeptime + "秒。\r\n";
-                                waitsecond = sleeptime;
-                                isstarttime = true;
-                                Thread.Sleep(sleeptime * 1000);
-                                continue;
-                            }
-                            //    }
-                            //}
-                            //}
-                            //catch (Exception ex)
-                            //{
-                            //    continue;
-                            //}
-                            #endregion
                         }
                     }
                     catch (Exception ex)
@@ -3061,7 +3060,7 @@ namespace AutoSend
             Random rnd = new Random();
             string[] txt;
             string mybl = "";
-           
+
             if (txtTitle.Text.Contains("【主变量】"))
             {
                 if (s.Trim() != "")
