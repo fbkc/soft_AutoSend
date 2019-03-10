@@ -36,15 +36,12 @@
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsslQQ = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslPhone = new System.Windows.Forms.ToolStripStatusLabel();
             this.ckbremenber = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.打开软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -107,28 +104,11 @@
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslQQ,
-            this.tsslPhone});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 296);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 311);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(508, 37);
+            this.statusStrip1.Size = new System.Drawing.Size(508, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tsslQQ
-            // 
-            this.tsslQQ.Image = ((System.Drawing.Image)(resources.GetObject("tsslQQ.Image")));
-            this.tsslQQ.Name = "tsslQQ";
-            this.tsslQQ.Size = new System.Drawing.Size(185, 32);
-            this.tsslQQ.Text = "客服QQ：2930797366";
-            // 
-            // tsslPhone
-            // 
-            this.tsslPhone.Image = ((System.Drawing.Image)(resources.GetObject("tsslPhone.Image")));
-            this.tsslPhone.Name = "tsslPhone";
-            this.tsslPhone.Size = new System.Drawing.Size(205, 32);
-            this.tsslPhone.Text = "咨询电话：0635-8215286";
             // 
             // ckbremenber
             // 
@@ -206,10 +186,8 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "搏世发布";
+            this.Text = "赢商云发布";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -225,8 +203,6 @@
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tsslQQ;
-        private System.Windows.Forms.ToolStripStatusLabel tsslPhone;
         private System.Windows.Forms.CheckBox ckbremenber;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.NotifyIcon notifyIcon1;

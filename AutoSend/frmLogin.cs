@@ -27,10 +27,8 @@ namespace AutoSend
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = Myinfo.sname + "-" + Myinfo.comname;
+            this.Text = Myinfo.sname;
             this.notifyIcon1.Text = Myinfo.sname;
-            this.tsslQQ.Text = "客服QQ：" + Myinfo.QQ;
-            this.tsslPhone.Text = "咨询电话：" + Myinfo.phone;
             List<string> source = AShelp.Load("user");
             if (source != null)
             {

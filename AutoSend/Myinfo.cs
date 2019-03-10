@@ -7,13 +7,13 @@ namespace AutoSend
     public static class Myinfo
     {
         //public static Sunisoft.IrisSkin.SkinEngine skin=new Sunisoft.IrisSkin.SkinEngine();
-        public static string ip = "http://www.boshiruanjian.com";
-        public static string comname = "---搏世信息发布专家，专注为企业服务！ www.boshiruanjian.com";
-        public static string sname = "搏世信息发布系统";
+        public static string ip = "";
+        public static string comname = "";
+        public static string sname = "赢商云发布";
         public static int sid =65;
         public static string snameword = "配置";
-        public static string QQ = "2930797366";
-        public static string phone = "0635-8215286";
+        public static string QQ = "";
+        public static string phone = "";
         public static string skinname = "no";
         public static string username = "";
         public static string password = "";

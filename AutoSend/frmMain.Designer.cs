@@ -30,14 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.官方网站ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMi = new System.Windows.Forms.ToolStripMenuItem();
-            this.更改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.联系我们ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslName = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPhone = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,6 +44,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txt_unit = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
             this.txt_pinpai = new System.Windows.Forms.TextBox();
@@ -111,6 +109,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button117 = new System.Windows.Forms.Button();
             this.button98 = new System.Windows.Forms.Button();
             this.button97 = new System.Windows.Forms.Button();
@@ -423,10 +422,6 @@
             this.timer8 = new System.Windows.Forms.Timer(this.components);
             this.timer9 = new System.Windows.Forms.Timer(this.components);
             this.timer10 = new System.Windows.Forms.Timer(this.components);
-            this.txt_unit = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -475,46 +470,11 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.官方网站ToolStripMenuItem,
-            this.tsMi,
-            this.更改密码ToolStripMenuItem,
-            this.联系我们ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(902, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(902, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // 官方网站ToolStripMenuItem
-            // 
-            this.官方网站ToolStripMenuItem.Name = "官方网站ToolStripMenuItem";
-            this.官方网站ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.官方网站ToolStripMenuItem.Text = "官方网站";
-            this.官方网站ToolStripMenuItem.Click += new System.EventHandler(this.官方网站ToolStripMenuItem_Click);
-            // 
-            // tsMi
-            // 
-            this.tsMi.Name = "tsMi";
-            this.tsMi.Size = new System.Drawing.Size(68, 21);
-            this.tsMi.Tag = "no";
-            this.tsMi.Text = "设置皮肤";
-            this.tsMi.Visible = false;
-            // 
-            // 更改密码ToolStripMenuItem
-            // 
-            this.更改密码ToolStripMenuItem.Name = "更改密码ToolStripMenuItem";
-            this.更改密码ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.更改密码ToolStripMenuItem.Text = "更改密码";
-            this.更改密码ToolStripMenuItem.Visible = false;
-            this.更改密码ToolStripMenuItem.Click += new System.EventHandler(this.更改密码ToolStripMenuItem_Click);
-            // 
-            // 联系我们ToolStripMenuItem
-            // 
-            this.联系我们ToolStripMenuItem.Name = "联系我们ToolStripMenuItem";
-            this.联系我们ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.联系我们ToolStripMenuItem.Text = "联系我们";
-            this.联系我们ToolStripMenuItem.Visible = false;
             // 
             // statusStrip1
             // 
@@ -590,10 +550,10 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList2;
             this.tabControl1.ItemSize = new System.Drawing.Size(82, 40);
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(902, 549);
+            this.tabControl1.Size = new System.Drawing.Size(902, 550);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
@@ -607,7 +567,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(894, 501);
+            this.tabPage1.Size = new System.Drawing.Size(894, 502);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "参数设置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -640,6 +600,22 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "信息参数设置";
+            // 
+            // txt_unit
+            // 
+            this.txt_unit.Location = new System.Drawing.Point(132, 352);
+            this.txt_unit.Name = "txt_unit";
+            this.txt_unit.Size = new System.Drawing.Size(160, 21);
+            this.txt_unit.TabIndex = 37;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(28, 356);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(65, 12);
+            this.label29.TabIndex = 36;
+            this.label29.Text = "计量单位：";
             // 
             // comboBox3
             // 
@@ -1155,14 +1131,14 @@
             this.dgvpracontent.AllowUserToAddRows = false;
             this.dgvpracontent.AllowUserToResizeRows = false;
             this.dgvpracontent.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvpracontent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvpracontent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvpracontent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvpracontent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idno,
@@ -1175,14 +1151,14 @@
             this.dgvpracontent.Location = new System.Drawing.Point(6, 3);
             this.dgvpracontent.Name = "dgvpracontent";
             this.dgvpracontent.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvpracontent.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvpracontent.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvpracontent.RowHeadersVisible = false;
             this.dgvpracontent.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvpracontent.RowTemplate.Height = 23;
@@ -1234,11 +1210,11 @@
             // 
             // del
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle14.NullValue = "删除";
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.del.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.NullValue = "删除";
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.del.DefaultCellStyle = dataGridViewCellStyle8;
             this.del.HeaderText = "";
             this.del.Name = "del";
             this.del.ReadOnly = true;
@@ -1326,6 +1302,14 @@
             this.tabPage14.TabIndex = 2;
             this.tabPage14.Text = "内容设置";
             this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(247, 92);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(621, 348);
+            this.richTextBox1.TabIndex = 27;
+            this.richTextBox1.Text = "";
             // 
             // button117
             // 
@@ -4448,30 +4432,6 @@
             // 
             this.timer9.Interval = 120000;
             // 
-            // txt_unit
-            // 
-            this.txt_unit.Location = new System.Drawing.Point(132, 352);
-            this.txt_unit.Name = "txt_unit";
-            this.txt_unit.Size = new System.Drawing.Size(160, 21);
-            this.txt_unit.TabIndex = 37;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(28, 356);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(65, 12);
-            this.label29.TabIndex = 36;
-            this.label29.Text = "计量单位：";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(247, 92);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(621, 348);
-            this.richTextBox1.TabIndex = 27;
-            this.richTextBox1.Text = "";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4488,14 +4448,12 @@
             this.Name = "frmMain";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = " 赢商云发布";
             this.Activated += new System.EventHandler(this.frmMain_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -4572,9 +4530,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 官方网站ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsMi;
-        private System.Windows.Forms.ToolStripMenuItem 联系我们ToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsslName;
         private System.Windows.Forms.ToolStripStatusLabel tsslPhone;
@@ -4765,7 +4720,6 @@
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Button button65;
         private System.Windows.Forms.Timer timer_heart;
-        private System.Windows.Forms.ToolStripMenuItem 更改密码ToolStripMenuItem;
         private System.Windows.Forms.Button button102;
         private System.Windows.Forms.Button button114;
         private System.Windows.Forms.Button button113;
