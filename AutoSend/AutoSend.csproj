@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AutoSend</RootNamespace>
-    <AssemblyName>搏世信息发布系统</AssemblyName>
+    <AssemblyName>赢商智能发布助手</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
@@ -59,7 +59,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>64X64.ico</ApplicationIcon>
+    <ApplicationIcon>ys.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -385,6 +385,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ys.ico" />
     <Content Include="64X64.ico" />
     <Content Include="bin\Debug\AutoUpdate.exe" />
     <Content Include="bin\Debug\Microsoft.mshtml.dll" />
