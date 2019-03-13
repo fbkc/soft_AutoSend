@@ -2526,7 +2526,7 @@ namespace AutoSend
             havecont = lsvdaifa.Items.Count;
             List<string> slist = new List<string>();
             slist.Add("http://bid.10huan.com/hyzx/handler/ModelHandler.ashx?action=moduleHtml");
-            slist.Add("http://www.16fafa.cn/hyfl/handler/ModelHandler.ashx?action=moduleHtml");
+            slist.Add("http://www.16fafa.cn/syx/handler/ModelHandler.ashx?action=moduleHtml");
             int q = -1;
             int w = slist.Count;
             if (w < 1)
