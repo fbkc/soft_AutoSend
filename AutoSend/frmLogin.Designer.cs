@@ -150,19 +150,19 @@
             this.打开软件ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // 打开软件ToolStripMenuItem
             // 
             this.打开软件ToolStripMenuItem.Name = "打开软件ToolStripMenuItem";
-            this.打开软件ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.打开软件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.打开软件ToolStripMenuItem.Text = "显示";
             this.打开软件ToolStripMenuItem.Click += new System.EventHandler(this.打开软件ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
